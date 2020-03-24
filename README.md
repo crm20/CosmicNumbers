@@ -20,7 +20,7 @@ You can do this one of two ways:
   - In the view controller code, perform the segue using this name
     - For ex: go to LevelOneGame.swift viewcontroller and look at function "Submit"
       - performSegue method uses paramemter "withIdentifier" with the name assigned to the segue to perform that segue for this action.
-EITHER WAYS, click on the segue (with the right inspector open) and the tab that looks like a spinning top as mentioned above, and change "Presentation" to "Full Screen".
+* EITHER WAYS, click on the segue (with the right inspector open) and the tab that looks like a spinning top as mentioned above, and change "Presentation" to "Full Screen".
 
 # How to unwind segue:
 1) Go to the view controller file (swift) and create an IBAction function (DON'T LINK IT TO ANYTHING making sure that the sender is the UIStoryboardSegue.
