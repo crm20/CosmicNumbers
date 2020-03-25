@@ -157,7 +157,8 @@ class LevelOneGame: UIViewController {
         
         //If the player answered the question incorrectly, he/she needs to try the same round again.
         if (tryAgainVC != nil){
-             let path = Bundle.main.path(forResource: "wrong.wav", ofType:nil)!
+
+            let path = Bundle.main.path(forResource: "wrong.wav", ofType:nil)!
             let url = URL(fileURLWithPath: path)
 
             do {
@@ -166,6 +167,7 @@ class LevelOneGame: UIViewController {
             } catch {
                 // couldn't load file :(
             }
+
             tryAgainVC?.previousOneVCNum = desiredNumber
             tryAgainVC?.previousOneSelectedNum = selectedAnswer
             tryAgainVC?.previousOne = true
