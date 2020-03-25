@@ -34,6 +34,8 @@ class LevelTwoGame: UIViewController {
     var waitingTime:Int = 5
     var mostrecentTick:UIView?=nil
     var accessibleNumbers:[UIView]=[]
+    var astronautOriginalPosition = CGPoint(x:0,y:0)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,9 @@ class LevelTwoGame: UIViewController {
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true 
         astronautPlaceLabel.text="Drag Astronaut Tommy to tick \(desiredNumber)" + " and click submit"
+        astronautOriginalPosition = astronaut.center
+//        print(astronautOriginalPosition.x)
+//        print(astronautOriginalPosition.y)
     }
     
     // Based on whether the player answered the question correctly, this function will direct the player to either incorrect/correct popup window
@@ -118,14 +123,14 @@ class LevelTwoGame: UIViewController {
     
     // Handle pan gesture - identify where the player drag the astronaut to
     @IBAction func handlepan(recognizer:UIPanGestureRecognizer) {
+        print(astronautOriginalPosition)
         var focusedView=UIAccessibility.focusedElement(using:
             UIAccessibility.AssistiveTechnologyIdentifier.notificationVoiceOver)
         
         let translation = recognizer.translation(in:self.view)
 
         if let view = recognizer.view {
-            let astronaut_position = astronaut.center.x
-        
+
             // The followings are to find intersection (while the player drag the astronaut over other objects on the screen)
             var possibleViewsToIntersect:[UIView] = []
             
@@ -135,6 +140,7 @@ class LevelTwoGame: UIViewController {
             
             let intersectingTicks:[UIView]=lineRef!.accessibleTicks.filter{$0 != view && view.frame.intersects(CGRect(x: $0.frame.minX+lineRef.frame.minX, y: $0.frame.minY+lineRef.frame.minY, width: $0.frame.width, height: $0.frame.height))}
             let intersectingNums:[UIView]=possibleViewsToIntersect.filter{$0 != view && view.frame.intersects($0.frame)}
+//            print(intersectingTicks)
             var intersectingViews=intersectingTicks
             
             for nums in intersectingNums{
@@ -182,17 +188,22 @@ class LevelTwoGame: UIViewController {
             }else{
                 print("more than 2 intersecting items")
             }
-            
             if(translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut){
-              //  print("splat")
+//                print("splat")
                 playSound()
                 holdingAstronaut=false
+                if(intersectingTicks != []) {
+                    print("on tick")
+                } else if (holdingAstronaut == false){
+                    print("not on tick")
+                    astronaut.center = astronautOriginalPosition
+                }
                 waitingTime=maxWaitingTime
             }
             else{
                 if(waitingTime<0){
                     holdingAstronaut=true
-                  //  print("holding")
+//                   print("holding")
                 }
                 else{
                     waitingTime-=1
@@ -232,9 +243,9 @@ class LevelTwoGame: UIViewController {
     @IBAction func Submit(_ sender: Any) {
         let astronaut_positionX = astronaut.center.x
         let astronaut_positionY = astronaut.center.y
-        var linerefbounds:CGRect=lineRef.bounds
-        var minXOfLine = lineRef.center.x-(linerefbounds.width/2)
-        var maxYOfLine = lineRef.center.y
+        let linerefbounds:CGRect=lineRef.bounds
+        let minXOfLine = lineRef.center.x-(linerefbounds.width/2)
+        let maxYOfLine = lineRef.center.y
     
         if (astronaut_positionX >= lineRef.points[desiredNumber].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[desiredNumber].bounds.maxX+minXOfLine+40
             && astronaut_positionY >= maxYOfLine-70 &&
