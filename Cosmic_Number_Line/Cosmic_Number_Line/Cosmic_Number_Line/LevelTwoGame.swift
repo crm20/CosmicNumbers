@@ -3,7 +3,6 @@
 //  COMP585Number
 //
 //
-
 import UIKit
 import AVFoundation
 
@@ -11,7 +10,6 @@ import AVFoundation
 class LevelTwoGame: UIViewController {
     
     // Reference to the visual objects
-
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var tutorial: UIButton!
     @IBOutlet weak var levels: UIButton!
@@ -22,7 +20,6 @@ class LevelTwoGame: UIViewController {
     var previousVC:UIViewController?=nil
     var previousVCSuccess:UIViewController?=nil
     var popOverVC:CorrectPopUpViewController?=nil
-    var i = 0
     var ranges=[(CGFloat(0.0),CGFloat(0.0))]
     var desiredNumber=Int.random(in: 0...5)
     var threshold=10
@@ -34,48 +31,50 @@ class LevelTwoGame: UIViewController {
     var waitingTime:Int = 5
     var mostrecentTick:UIView?=nil
     var accessibleNumbers:[UIView]=[]
+    var astronautOriginalPosition = CGPoint(x:0,y:0)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
-        isAccessibilityElement = true 
+        isAccessibilityElement = true
         astronautPlaceLabel.text="Drag Astronaut Tommy to tick \(desiredNumber)" + " and click submit"
+        astronautOriginalPosition = astronaut.center
     }
     
     // Based on whether the player answered the question correctly, this function will direct the player to either incorrect/correct popup window
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var tryAgainVC=segue.destination as? IncorrectPopUpViewController
-        var selectednumber = 0
-        var notonNumberline = true
+        let tryAgainVC=segue.destination as? IncorrectPopUpViewController
+        var selectedNumber = 0
+        var notOnNumberLine = true
         let astronaut_positionX = astronaut.center.x
         let astronaut_positionY = astronaut.center.y
-        var linerefbounds:CGRect=lineRef.bounds
-        var minXOfLine = lineRef.center.x-(linerefbounds.width/2)
-        var maxYOfLine = lineRef.center.y
-        var index = 0
-        // Check which number the user is on, and to notify(hint) the user that number
-        while (index < 6) {
-            if (astronaut_positionX >= lineRef.points[index].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[index].bounds.maxX+minXOfLine+40
+        let lineRefBounds:CGRect=lineRef.bounds
+        let minXOfLine = lineRef.center.x - (lineRefBounds.width/2)
+        let maxYOfLine = lineRef.center.y
+        
+        // Checks which number the user is on, and notifies (hint) the user that number.
+        for i in 0...5 {
+            if (astronaut_positionX >= lineRef.points[i].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[i].bounds.maxX+minXOfLine+40
                 && astronaut_positionY >= maxYOfLine-70 &&
                 astronaut_positionY < maxYOfLine+100) {
-                selectednumber = index
-                notonNumberline = false
+                selectedNumber = i
+                notOnNumberLine = false
             }
-            index += 1
         }
         
         // If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
             tryAgainVC?.previousTwoVCNum=desiredNumber
-            tryAgainVC?.previousTwoSelectedNum=selectednumber
-            tryAgainVC?.previousTwoOnNumberLine=notonNumberline
+            tryAgainVC?.previousTwoSelectedNum=selectedNumber
+            tryAgainVC?.previousTwoOnNumberLine=notOnNumberLine
             tryAgainVC?.previousTwo=true
         }
-        else{
+        else {
             // If the player answered the question correctly, he/she will play the next round
             var rightVC = segue.destination as? CorrectPopUpViewController
-            if (rightVC != nil){
+            if (rightVC != nil) {
                 rightVC!.parentTwoVC=self
                 rightVC!.numLevelsComplete=self.howManyLevelsAreDone
             }
@@ -86,46 +85,48 @@ class LevelTwoGame: UIViewController {
     }
     
     // Create number labels for the number line
-    func initializeNumberTexts(){
-        let screenSize: CGRect = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let distance = lineRef.distance
-        let textHeight=100
-        let textWidth=40
-        var linerefbounds:CGRect=lineRef.bounds
-        let spaceBetweenLineAndText:CGFloat=10.0
+    func initializeNumberTexts() {
+        let lineRefBounds:CGRect=lineRef.bounds
+        let spaceBetweenLineAndText:CGFloat = 10.0
         
-        // Create 5 labels and make them accessible
-        while (i < lineRef.numberOfPoints+1) {
-            let xdist = (distance*CGFloat(i))
-            var minXOfLine = lineRef.center.x-(linerefbounds.width/2)
-            var maxYOfLine = lineRef.center.y+(linerefbounds.height/2)
-            let label = UILabel(frame: CGRect(x: xdist+lineRef.offSetFromEdges + minXOfLine, y: maxYOfLine+spaceBetweenLineAndText, width: CGFloat(textWidth), height: CGFloat(textHeight)))
+        // Create 5 number labels and make them accessible
+        for i in 0...lineRef.numberOfPoints {
+            let xDist = (lineRef.distance*CGFloat(i))
+            let minXOfLine = lineRef.center.x-(lineRefBounds.width/2)
+            let maxYOfLine = lineRef.center.y+(lineRefBounds.height/2)
+            let label = UILabel(frame: CGRect(
+                    x: xDist+lineRef.offSetFromEdges + minXOfLine,
+                    y: maxYOfLine+spaceBetweenLineAndText,
+                    width: CGFloat(40.0),
+                    height: CGFloat(100.0)
+                )
+            )
             
-            label.isAccessibilityElement = true
+            // Initializing the number label's color, text, and accessibility traits.
             label.text = String(i)
             label.font = UIFont(name: "Arial-BoldMT", size: 50)
             label.textColor = UIColor.white;
-            self.view.addSubview(label)
+            label.isAccessibilityElement = true
             label.accessibilityTraits = UIAccessibilityTraits.playsSound
             label.isUserInteractionEnabled = true
             label.accessibilityLabel = String(i)
+            
+            // Adding the label to the view and appending it to the [accessibleNumbers] array.
+            self.view.addSubview(label)
             accessibleNumbers.append(label)
-            i = i+1
         }
         self.view.accessibilityElements = [astronautPlaceLabel, astronaut, lineRef, accessibleNumbers, submitBtn, tutorial, levels];
     }
     
-    // Handle pan gesture - identify where the player drag the astronaut to
+    // Function that identifies where the player has dragged the astronaut.
     @IBAction func handlepan(recognizer:UIPanGestureRecognizer) {
-        var focusedView=UIAccessibility.focusedElement(using:
+        let focusedView=UIAccessibility.focusedElement(using:
             UIAccessibility.AssistiveTechnologyIdentifier.notificationVoiceOver)
         
         let translation = recognizer.translation(in:self.view)
 
         if let view = recognizer.view {
-            let astronaut_position = astronaut.center.x
-        
+
             // The followings are to find intersection (while the player drag the astronaut over other objects on the screen)
             var possibleViewsToIntersect:[UIView] = []
             
@@ -133,22 +134,27 @@ class LevelTwoGame: UIViewController {
                 possibleViewsToIntersect.append(numlabel)
             }
             
-            let intersectingTicks:[UIView]=lineRef!.accessibleTicks.filter{$0 != view && view.frame.intersects(CGRect(x: $0.frame.minX+lineRef.frame.minX, y: $0.frame.minY+lineRef.frame.minY, width: $0.frame.width, height: $0.frame.height))}
+            let intersectingTicks:[UIView] = lineRef!.accessibleTicks.filter{
+                        $0 != view && view.frame.intersects(CGRect(
+                        x: $0.frame.minX+lineRef.frame.minX,
+                        y: $0.frame.minY+lineRef.frame.minY,
+                        width: $0.frame.width,
+                        height: $0.frame.height)
+                    )
+                }
+            
             let intersectingNums:[UIView]=possibleViewsToIntersect.filter{$0 != view && view.frame.intersects($0.frame)}
             var intersectingViews=intersectingTicks
             
-            for nums in intersectingNums{
+            for nums in intersectingNums {
                 intersectingViews.append(nums)
             }
             
-            for iView in intersectingViews{
-                //print("Intersect="+(iView.accessibilityLabel ?? "NO ACCESS"))
+            if (intersectingViews.count == 0){
+                mostrecentTick = nil
             }
-            
-            if (intersectingViews.count==0){
-                mostrecentTick=nil
-            }
-            // Make sounds when the player drag the astronaut over objects
+                
+            // Makes sounds when the player drag the astronaut over objects
             else if (intersectingViews.count==1){
                 if (intersectingViews[0] != mostrecentTick) {
                     mostrecentTick=intersectingViews[0]
@@ -161,43 +167,60 @@ class LevelTwoGame: UIViewController {
                     let synthesizer = AVSpeechSynthesizer()
                     synthesizer.speak(utterance)
                 }
-                else{
-                    //do nothing b/c it's the same read item
-                }
-            }else if (intersectingViews.count==2){
+            } else if (intersectingViews.count==2) {
                 if (intersectingViews[1] != mostrecentTick) {
                     mostrecentTick=intersectingViews[1]
                     
                     let utterance = AVSpeechUtterance(string: intersectingViews[1].accessibilityLabel ?? "")
                     utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
                     utterance.rate = 0.5
-                    utterance.volume=5
+                    utterance.volume = 5
                     
                     let synthesizer = AVSpeechSynthesizer()
                     synthesizer.speak(utterance)
                 }
-                else{
-                    //do nothing b/c it's the same read item
-                }
-            }else{
-                print("more than 2 intersecting items")
             }
-            
-            if(translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut){
-              //  print("splat")
+            if (translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut){
                 playSound()
-                holdingAstronaut=false
-                waitingTime=maxWaitingTime
-            }
-            else{
-                if(waitingTime<0){
-                    holdingAstronaut=true
-                  //  print("holding")
+                holdingAstronaut = false
+                
+                // If statement that checks if the player has placed Tommy on a tick.
+                if (intersectingTicks != []) {
+                    // [currentTick] refers to the tick [astronaut] is currently placed on top of.
+                    let currentTick: UIView = intersectingTicks[intersectingTicks.count - 1];
+                    
+                    // [minXOfLine] is the coordinate x value of '0' on the number line.
+                    let minXOfLine = lineRef.center.x - (lineRef.bounds.width/2)
+                    
+                    // 'Locking' Tommy on the [currentTick]
+                    // Math explanation:
+                    // x:
+                    //    - Start from x value of '0' on the number line [minXOfLine].
+                    //    - Add the distance from '0' on the number line to the x value of the current tick [currentTick.frame.minX].
+                    //    - Since the width of the line is 30.0, 15.0 should be added to place Tommy on the middle of the tick.
+                    // y:
+                    //    - Start from the y value of the line on the screen [lineRef.center.y] + [lineRef.bounds.height] / 2
+                    //    - Subtract 10.0 since that's the space between the text and tick.
+                    //    - Subtract 20.0 since that's the width of the number line.
+                    //    - Subtract half the height of Tommy to place him on the number line.
+                    astronaut.center = CGPoint(
+                        x: minXOfLine + currentTick.frame.minX + 15.0,
+                        y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
+                    );
+                    
+                // Returns Tommy back to the original position.
+                } else if (holdingAstronaut == false){
+                    astronaut.center = astronautOriginalPosition
                 }
-                else{
-                    waitingTime-=1
-                    holdingAstronaut=false
-                   // print("decrement")
+                waitingTime = maxWaitingTime
+            }
+            else {
+                if (waitingTime < 0){
+                    holdingAstronaut = true
+                }
+                else {
+                    waitingTime -= 1
+                    holdingAstronaut = false
                 }
             }
             view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
@@ -222,7 +245,7 @@ class LevelTwoGame: UIViewController {
             player.play()
             
         } catch let error {
-            print(error.localizedDescription)
+//            print(error.localizedDescription)
         }
     }
     
@@ -232,19 +255,17 @@ class LevelTwoGame: UIViewController {
     @IBAction func Submit(_ sender: Any) {
         let astronaut_positionX = astronaut.center.x
         let astronaut_positionY = astronaut.center.y
-        var linerefbounds:CGRect=lineRef.bounds
-        var minXOfLine = lineRef.center.x-(linerefbounds.width/2)
-        var maxYOfLine = lineRef.center.y
+        let lineRefBounds:CGRect=lineRef.bounds
+        let minXOfLine = lineRef.center.x-(lineRefBounds.width/2)
+        let maxYOfLine = lineRef.center.y
     
         if (astronaut_positionX >= lineRef.points[desiredNumber].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[desiredNumber].bounds.maxX+minXOfLine+40
             && astronaut_positionY >= maxYOfLine-70 &&
             astronaut_positionY < maxYOfLine+100) {
             performSegue(withIdentifier: "toCongrats", sender: self)
-            
         }
         
         else {
-            //print("astronaut is in the wrong place!")
             performSegue(withIdentifier: "toTryAgain", sender: self)
         }
         
@@ -274,7 +295,6 @@ class LevelTwoGame: UIViewController {
     // This is to check if an accessible element is focused
     override func accessibilityElementDidBecomeFocused()
     {
-        print("focused")
         var focusedElement:UIView
         var accessibleTicksRef:[UIView]=lineRef.accessibleTicks
         var touchedATick:Bool=false
