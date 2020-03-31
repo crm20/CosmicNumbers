@@ -69,12 +69,13 @@ class LevelFiveGame: UIViewController {
         
         // If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
-            tryAgainVC?.previousTwoVCNum=desiredNumber
-            tryAgainVC?.previousTwoSelectedNum=selectednumber
-            tryAgainVC?.previousTwoOnNumberLine=notonNumberline
-            tryAgainVC?.previousTwo=true
+            tryAgainVC?.previousFiveVCNum=desiredNumber
+            //tryAgainVC?.previousFiveDesiredNum=selectednumber
+            tryAgainVC?.previousFiveOnNumberLine = notonNumberline
+            tryAgainVC?.previousFive=true
         }
         else{
+            print("TESTING")
              //If the player answered the question correctly, he/she will play the next round
             var rightVC = segue.destination as? CorrectPopUpViewController
             if (rightVC != nil){
@@ -232,15 +233,18 @@ class LevelFiveGame: UIViewController {
     // whether the player answered the question correctly or not. There are some tolerance allowed so the player can be a
     // little bit off on the number line
     @IBAction func Submit(_ sender: Any) {
+        
         let astronaut_positionX = astronaut.center.x
         let astronaut_positionY = astronaut.center.y
         var linerefbounds:CGRect=lineRef.bounds
         var minXOfLine = lineRef.center.x-(linerefbounds.width/2)
         var maxYOfLine = lineRef.center.y
-    
+        print("HELP ME")
         if (astronaut_positionX >= lineRef.points[desiredNumber].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[desiredNumber].bounds.maxX+minXOfLine+40
             && astronaut_positionY >= maxYOfLine-70 &&
             astronaut_positionY < maxYOfLine+100) {
+            print("HELP ME1")
+
             performSegue(withIdentifier: "toCongrats", sender: self)
             
         }
