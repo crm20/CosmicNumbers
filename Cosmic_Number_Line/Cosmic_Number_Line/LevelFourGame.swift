@@ -121,10 +121,9 @@ class LevelFourGame: UIViewController {
             label.isUserInteractionEnabled = true
             label.accessibilityLabel = String(i)
             accessibleNumbers.append(label)
-            i = i+1
             
             // Determining the initial location (x, y) of [astronaut]
-            if (i == desiredNumber) {
+            if (i == astronautNumber) {
                 // Setting [astronaut] to the correct location with correct dimensions.
                 // Math explanation:
                 // x:
@@ -141,6 +140,7 @@ class LevelFourGame: UIViewController {
                     y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
                 )
             }
+            i = i+1
         }
         self.view.accessibilityElements = [question, lineRef, astronaut, accessibleNumbers, astronautTwo, pickerItem, questionNum, submitBtn, tutorial, levels];
     }
@@ -157,6 +157,8 @@ extension LevelFourGame: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
         selectedAnswer = pickerData[row] as String
+        print(selectedAnswer)
+        print(desiredNumber)
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

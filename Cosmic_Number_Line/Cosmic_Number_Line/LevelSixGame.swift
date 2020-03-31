@@ -36,6 +36,7 @@ class LevelSixGame: UIViewController {
     var waitingTime:Int = 5
     var mostrecentTick:UIView?=nil
     var accessibleNumbers:[UIView]=[]
+    var astronautOriginalPosition = CGPoint(x:0,y:0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ class LevelSixGame: UIViewController {
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true
         astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) - \(num2)"
+        astronautOriginalPosition = astronaut.center
     }
     
     // Based on whether the player answered the question correctly, this function will direct the player to either incorrect/correct popup window
@@ -185,18 +187,45 @@ class LevelSixGame: UIViewController {
                 print("more than 2 intersecting items")
             }
             
-            if(translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut){
-              //  print("splat")
+            if (translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut) {
                 playSound()
-                holdingAstronaut=false
-                waitingTime=maxWaitingTime
+                holdingAstronaut = false
+                         
+                if (intersectingTicks != []) {
+                    // [currentTick] refers to the tick [astronaut] is currently placed on top of.
+                    let currentTick: UIView = intersectingTicks[intersectingTicks.count - 1];
+                    
+                    // [minXOfLine] is the coordinate x value of '0' on the number line.
+                    let minXOfLine = lineRef.center.x - (lineRef.bounds.width/2)
+                                                
+                    // 'Locking' Tommy on the [currentTick]
+                    // Math explanation:
+                    // x:
+                    //    - Start from x value of '0' on the number line [minXOfLine].
+                    //    - Add the distance from '0' on the number line to the x value of the current tick [currentTick.frame.minX].
+                    //    - Since the width of the line is 30.0, 15.0 should be added to place Tommy on the middle of the tick.
+                    // y:
+                    //    - Start from the y value of the line on the screen [lineRef.center.y] + [lineRef.bounds.height] / 2
+                    //    - Subtract 10.0 since that's the space between the text and tick.
+                    //    - Subtract 20.0 since that's the width of the number line.
+                    //    - Subtract half the height of Tommy to place him on the number line.
+                    astronaut.center = CGPoint(
+                        x: minXOfLine + currentTick.frame.minX + 15.0,
+                        y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
+                    );
+                                     
+                    // Returns Tommy back to the original position.
+                    } else if (holdingAstronaut == false) {
+                        astronaut.center = astronautOriginalPosition
+                    }
+                waitingTime = maxWaitingTime
             }
-            else{
-                if(waitingTime<0){
+            else {
+                if (waitingTime<0){
                     holdingAstronaut=true
                   //  print("holding")
                 }
-                else{
+                else {
                     waitingTime-=1
                     holdingAstronaut=false
                    // print("decrement")
