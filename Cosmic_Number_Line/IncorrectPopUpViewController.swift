@@ -30,8 +30,9 @@ class IncorrectPopUpViewController: UIViewController {
     var previousFourAstronautNum:Int=0
 
     var previousFive = false
-    var previousFiveDesiredNum:Int=0
-    var previousFiveAstronautNum:Int=0
+    var previousFiveVCNum:Int=0
+    var previousFiveSelectedNum:Int=0
+    var previousFiveOnNumberLine = false
     
     var previousSix = false
     var previousSixDesiredNum:Int=0
@@ -84,7 +85,7 @@ class IncorrectPopUpViewController: UIViewController {
         else if (previousFive == true) {
             tryagainhint.text = ""
             self.showAnimate()
-               }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,6 +115,12 @@ class IncorrectPopUpViewController: UIViewController {
             levelVC.desiredNumber=previousFourDesiredNum
             levelVC.astronautNumber=previousFourAstronautNum
         }
+        else if (previousFive == true) {
+            let levelVC:LevelFiveGame=segue.destination as! LevelFiveGame
+        }
+        else if (previousFive == true) {
+            let levelVC:LevelSixGame=segue.destination as! LevelSixGame
+        }
     }
 
     // Allows the player to go back to previous page
@@ -134,8 +141,11 @@ class IncorrectPopUpViewController: UIViewController {
             performSegue(withIdentifier: "tryAgainToLevelFour", sender: self)
         }
         if (previousFive == true) {
-                performSegue(withIdentifier: "tryAgainToLevelFive", sender: self)
-            }
+            performSegue(withIdentifier: "tryAgainToLevelFive", sender: self)
+        }
+        if (previousSix == true) {
+            performSegue(withIdentifier: "tryAgainToLevelSix", sender: self)
+        }
     }
     
     // Helper method - show the popup window animation

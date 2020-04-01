@@ -3,7 +3,6 @@
 //  COMP585Number
 //
 //
-
 import UIKit
 import AVFoundation
 
@@ -11,7 +10,6 @@ import AVFoundation
 class LevelSixGame: UIViewController {
     
     // Reference to the visual objects
-
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var tutorial: UIButton!
     @IBOutlet weak var levels: UIButton!
@@ -24,9 +22,9 @@ class LevelSixGame: UIViewController {
     var popOverVC:CorrectPopUpViewController?=nil
     var i = 0
     var ranges=[(CGFloat(0.0),CGFloat(0.0))]
-    let num1 = Int.random(in: 0...3)
-    let num2 = Int.random(in: 0...2)
-    lazy var desiredNumber = num1+num2
+    lazy var num1 = Int.random(in: 0...5)
+    lazy var num2 = Int.random(in: 0...num1)
+    lazy var desiredNumber = num1-num2
     var threshold=10
     var exampleVar:Int=0
     var player: AVAudioPlayer?
@@ -36,6 +34,7 @@ class LevelSixGame: UIViewController {
     var waitingTime:Int = 5
     var mostrecentTick:UIView?=nil
     var accessibleNumbers:[UIView]=[]
+    var astronautOriginalPosition = CGPoint(x:0,y:0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +42,7 @@ class LevelSixGame: UIViewController {
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true
         astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) - \(num2)"
+        astronautOriginalPosition = astronaut.center
     }
     
     // Based on whether the player answered the question correctly, this function will direct the player to either incorrect/correct popup window
@@ -69,22 +69,22 @@ class LevelSixGame: UIViewController {
         
         // If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
-            tryAgainVC?.previousTwoVCNum=desiredNumber
-            tryAgainVC?.previousTwoSelectedNum=selectednumber
-            tryAgainVC?.previousTwoOnNumberLine=notonNumberline
-            tryAgainVC?.previousTwo=true
+            //tryAgainVC?.previousSixVCNum=desiredNumber
+            //tryAgainVC?.previousSixSelectedNum=selectednumber
+            //tryAgainVC?.previousSixOnNumberLine=notonNumberline
+            tryAgainVC?.previousSix=true
         }
-        //else{
+        else{
              //If the player answered the question correctly, he/she will play the next round
-            //var rightVC = segue.destination as? CorrectPopUpViewController
-            //if (rightVC != nil){
-                //rightVC!.parentFiveVC=self
-                //rightVC!.numLevelsComplete=self.howManyLevelsAreDone
-            //}
-            //else{
-               // print("other vc")
-            //}
-        //}
+            var rightVC = segue.destination as? CorrectPopUpViewController
+            if (rightVC != nil){
+                rightVC!.parentSixVC=self
+                rightVC!.numLevelsComplete=self.howManyLevelsAreDone
+            }
+            else{
+                print("other vc")
+            }
+        }
     }
     
     // Create number labels for the number line
@@ -185,18 +185,45 @@ class LevelSixGame: UIViewController {
                 print("more than 2 intersecting items")
             }
             
-            if(translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut){
-              //  print("splat")
+            if (translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut) {
                 playSound()
-                holdingAstronaut=false
-                waitingTime=maxWaitingTime
+                holdingAstronaut = false
+                         
+                if (intersectingTicks != []) {
+                    // [currentTick] refers to the tick [astronaut] is currently placed on top of.
+                    let currentTick: UIView = intersectingTicks[intersectingTicks.count - 1];
+                    
+                    // [minXOfLine] is the coordinate x value of '0' on the number line.
+                    let minXOfLine = lineRef.center.x - (lineRef.bounds.width/2)
+                                                
+                    // 'Locking' Tommy on the [currentTick]
+                    // Math explanation:
+                    // x:
+                    //    - Start from x value of '0' on the number line [minXOfLine].
+                    //    - Add the distance from '0' on the number line to the x value of the current tick [currentTick.frame.minX].
+                    //    - Since the width of the line is 30.0, 15.0 should be added to place Tommy on the middle of the tick.
+                    // y:
+                    //    - Start from the y value of the line on the screen [lineRef.center.y] + [lineRef.bounds.height] / 2
+                    //    - Subtract 10.0 since that's the space between the text and tick.
+                    //    - Subtract 20.0 since that's the width of the number line.
+                    //    - Subtract half the height of Tommy to place him on the number line.
+                    astronaut.center = CGPoint(
+                        x: minXOfLine + currentTick.frame.minX + 15.0,
+                        y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
+                    );
+                                     
+                    // Returns Tommy back to the original position.
+                    } else if (holdingAstronaut == false) {
+                        astronaut.center = astronautOriginalPosition
+                    }
+                waitingTime = maxWaitingTime
             }
-            else{
-                if(waitingTime<0){
+            else {
+                if (waitingTime<0){
                     holdingAstronaut=true
                   //  print("holding")
                 }
-                else{
+                else {
                     waitingTime-=1
                     holdingAstronaut=false
                    // print("decrement")

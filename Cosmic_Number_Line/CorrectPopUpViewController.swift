@@ -54,6 +54,11 @@ class CorrectPopUpViewController: UIViewController {
             performSegue(withIdentifier: "backToLevelFive", sender: self)
             parentFiveVC?.removePopOverView()
         }
+        if((parentSixVC) != nil)
+        {
+            performSegue(withIdentifier: "backToLevelSix", sender: self)
+            parentSixVC?.removePopOverView()
+        }
     }
     
     // Directs the player to the next level of game
@@ -89,6 +94,13 @@ class CorrectPopUpViewController: UIViewController {
         if((parentFiveVC) != nil)
         {
             if let destinationVC = segue.destination as? LevelFiveGame{
+                destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
+                destinationVC.previousVC=self
+            }
+        }
+        if((parentSixVC) != nil)
+        {
+            if let destinationVC = segue.destination as? LevelSixGame{
                 destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
                 destinationVC.previousVC=self
             }
