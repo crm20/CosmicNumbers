@@ -5,7 +5,6 @@
 //  Created by Tian Liu on 4/2/19.
 //  Copyright © 2019 Tian Liu. All rights reserved.
 //
-
 import UIKit
 
 class IncorrectPopUpViewController: UIViewController {
@@ -28,6 +27,18 @@ class IncorrectPopUpViewController: UIViewController {
     var previousFour = false
     var previousFourDesiredNum:Int=0
     var previousFourAstronautNum:Int=0
+
+    var previousFive = false
+    var previousFiveVCNum:Int=0
+    var previousFiveSelectedNum:Int=0
+    var previousFiveNum1:Int=0
+    var previousFiveNum2:Int=0
+    
+    var previousSix = false
+    var previousSixVCNum:Int=0
+    var previousSixSelectedNum:Int=0
+    var previousSixNum1:Int=0
+    var previousSixNum2:Int=0
     
 
     @IBOutlet weak var tryagainhint: UILabel!
@@ -73,6 +84,20 @@ class IncorrectPopUpViewController: UIViewController {
             tryagainhint.text = ""
             self.showAnimate()
         }
+            
+        // If the user is playing level five
+        // no hint will be provided
+        else if (previousFive == true) {
+            tryagainhint.text = ""
+            self.showAnimate()
+        }
+        
+        // If the user is playing level five
+        // no hint will be provided
+        else if (previousSix == true) {
+            tryagainhint.text = "You were on number \(previousSixSelectedNum)"
+            self.showAnimate()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,6 +127,18 @@ class IncorrectPopUpViewController: UIViewController {
             levelVC.desiredNumber=previousFourDesiredNum
             levelVC.astronautNumber=previousFourAstronautNum
         }
+        else if (previousFive == true) {
+            let levelVC:LevelFiveGame=segue.destination as! LevelFiveGame
+            levelVC.desiredNumber=previousFiveVCNum
+            levelVC.num1=previousFiveNum1
+            levelVC.num2=previousFiveNum2
+        }
+        else if (previousSix == true) {
+            let levelVC:LevelSixGame=segue.destination as! LevelSixGame
+            levelVC.desiredNumber=previousSixVCNum
+            levelVC.num1=previousSixNum1
+            levelVC.num2=previousSixNum2
+        }
     }
 
     // Allows the player to go back to previous page
@@ -120,6 +157,12 @@ class IncorrectPopUpViewController: UIViewController {
         
         if (previousFour == true) {
             performSegue(withIdentifier: "tryAgainToLevelFour", sender: self)
+        }
+        if (previousFive == true) {
+            performSegue(withIdentifier: "tryAgainToLevelFive", sender: self)
+        }
+        if (previousSix == true) {
+            performSegue(withIdentifier: "tryAgainToLevelSix", sender: self)
         }
     }
     

@@ -5,7 +5,6 @@
 //  Created by Tian Liu on 12/5/19.
 //  Copyright © 2019 Tian Liu. All rights reserved.
 //
-
 import UIKit
 import AVFoundation
 
@@ -108,10 +107,10 @@ class LevelFourGame: UIViewController {
         
         // Create 5 labels and make them accessible
         while (i < lineRef.numberOfPoints+1) {
-            let xdist = (distance*CGFloat(i))
-            var minXOfLine = lineRef.center.x-(linerefbounds.width/2)
-            var maxYOfLine = lineRef.center.y+(linerefbounds.height/2)
-            let label = UILabel(frame: CGRect(x: xdist+lineRef.offSetFromEdges + minXOfLine, y: maxYOfLine+spaceBetweenLineAndText, width: CGFloat(textWidth), height: CGFloat(textHeight)))
+            let xDist = (distance*CGFloat(i))
+            let minXOfLine = lineRef.center.x-(linerefbounds.width/2)
+            let maxYOfLine = lineRef.center.y+(linerefbounds.height/2)
+            let label = UILabel(frame: CGRect(x: xDist+lineRef.offSetFromEdges + minXOfLine, y: maxYOfLine+spaceBetweenLineAndText, width: CGFloat(textWidth), height: CGFloat(textHeight)))
             
             label.isAccessibilityElement = true
             label.text = String(i)
@@ -123,6 +122,25 @@ class LevelFourGame: UIViewController {
             label.accessibilityLabel = String(i)
             accessibleNumbers.append(label)
             i = i+1
+            
+            // Determining the initial location (x, y) of [astronaut]
+            if (i == desiredNumber) {
+                // Setting [astronaut] to the correct location with correct dimensions.
+                // Math explanation:
+                // x:
+                //    - Start from x value of '0' on the number line [minXOfLine].
+                //    - Add the distance from '0' on the number line to the x value of the current tick [currentTick.frame.minX].
+                //    - Since the width of the line is 30.0, 15.0 should be added to place Tommy on the middle of the tick.
+                // y:
+                //    - Start from the y value of the line on the screen [lineRef.center.y] + [lineRef.bounds.height] / 2
+                //    - Subtract 10.0 since that's the space between the text and tick.
+                //    - Subtract 20.0 since that's the width of the number line.
+                //    - Subtract half the height of Tommy to place him on the number line.
+                astronaut.center = CGPoint(
+                    x: minXOfLine + xDist + lineRef.offSetFromEdges + 15.0,
+                    y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
+                )
+            }
         }
         self.view.accessibilityElements = [question, lineRef, astronaut, accessibleNumbers, astronautTwo, pickerItem, questionNum, submitBtn, tutorial, levels];
     }
@@ -154,4 +172,3 @@ extension LevelFourGame: UIPickerViewDelegate, UIPickerViewDataSource {
         return pickerLabel!
     }
 }
-

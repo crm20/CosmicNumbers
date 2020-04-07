@@ -5,7 +5,6 @@
 //  Created by Tian Liu on 2/21/19.
 //  Copyright © 2019 Tian Liu. All rights reserved.
 //
-
 import UIKit
 
 class Line: UIView {
@@ -43,7 +42,7 @@ class Line: UIView {
         line.lineWidth = lineWidth
         line.stroke()
 
-        // The line is on a subview, so we need to add this subview on the screen. 
+        // The line is on a subview, so we need to add this subview on the screen.
         backgroundView=LineBackgroundView(frame: CGRect(x:self.bounds.minX,y:self.bounds.minY,width:self.bounds.maxX-self.bounds.minX,height:self.bounds.maxY-self.bounds.minY))
         backgroundView!.line=self
         
@@ -86,6 +85,11 @@ class Line: UIView {
                 (self.parentViewController as! LevelThreeGame).initializeNumberTexts()
             }  else if let parentVC = parentVC as? LevelFourGame {
                 (self.parentViewController as! LevelFourGame).initializeNumberTexts()
+            } else if let parentVC = parentVC as? LevelFiveGame {
+                (self.parentViewController as! LevelFiveGame).initializeNumberTexts()
+            } else if let parentVC = parentVC as? LevelSixGame {
+                (self.parentViewController as! LevelSixGame).initializeNumberTexts()
+                
             }
         }
     }

@@ -5,7 +5,6 @@
 //  Created by Tian Liu on 4/2/19.
 //  Copyright © 2019 Tian Liu. All rights reserved.
 //
-
 import UIKit
 
 class CorrectPopUpViewController: UIViewController {
@@ -13,6 +12,8 @@ class CorrectPopUpViewController: UIViewController {
     var parentTwoVC:LevelTwoGame?=nil
     var parentThreeVC:LevelThreeGame?=nil
     var parentFourVC:LevelFourGame?=nil
+    var parentFiveVC:LevelFiveGame?=nil
+    var parentSixVC:LevelSixGame?=nil
     var numLevelsComplete:Int=0
     
     // Directs the player to level selection page
@@ -47,6 +48,16 @@ class CorrectPopUpViewController: UIViewController {
             performSegue(withIdentifier: "backToLevelFour", sender: self)
             parentFourVC?.removePopOverView()
         }
+        if((parentFiveVC) != nil)
+        {
+            performSegue(withIdentifier: "backToLevelFive", sender: self)
+            parentFiveVC?.removePopOverView()
+        }
+        if((parentSixVC) != nil)
+        {
+            performSegue(withIdentifier: "backToLevelSix", sender: self)
+            parentSixVC?.removePopOverView()
+        }
     }
     
     // Directs the player to the next level of game
@@ -75,6 +86,20 @@ class CorrectPopUpViewController: UIViewController {
         if((parentFourVC) != nil)
         {
             if let destinationVC = segue.destination as? LevelFourGame{
+                destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
+                destinationVC.previousVC=self
+            }
+        }
+        if((parentFiveVC) != nil)
+        {
+            if let destinationVC = segue.destination as? LevelFiveGame{
+                destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
+                destinationVC.previousVC=self
+            }
+        }
+        if((parentSixVC) != nil)
+        {
+            if let destinationVC = segue.destination as? LevelSixGame{
                 destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
                 destinationVC.previousVC=self
             }
