@@ -27,6 +27,13 @@
 		F2D3FD9E242A7BA40025F91D /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D3FD9D242A7BA40025F91D /* Line.swift */; };
 		F2D3FDA1242A7C430025F91D /* LineBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D3FD9F242A7C430025F91D /* LineBackgroundView.swift */; };
 		F2D3FDA2242A7C430025F91D /* TickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D3FDA0242A7C430025F91D /* TickView.swift */; };
+		F2D8A85F243C0BE200A37852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D8A859243C0BE200A37852 /* Main.storyboard */; };
+		F2D8A860243C0BE200A37852 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85A243C0BE200A37852 /* SwiftUIView.swift */; };
+		F2D8A861243C0BE200A37852 /* LevelFiveGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85B243C0BE200A37852 /* LevelFiveGame.swift */; };
+		F2D8A862243C0BE200A37852 /* LevelFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85C243C0BE200A37852 /* LevelFiveViewController.swift */; };
+		F2D8A863243C0BE200A37852 /* LevelSixGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85D243C0BE200A37852 /* LevelSixGame.swift */; };
+		F2D8A864243C0BE200A37852 /* LevelSixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85E243C0BE200A37852 /* LevelSixViewController.swift */; };
+		F2EC384E243C27B3009E89AB /* LevelFiveGamePt2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC384D243C27B3009E89AB /* LevelFiveGamePt2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +59,13 @@
 		F2D3FD9D242A7BA40025F91D /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		F2D3FD9F242A7C430025F91D /* LineBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineBackgroundView.swift; sourceTree = "<group>"; };
 		F2D3FDA0242A7C430025F91D /* TickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickView.swift; sourceTree = "<group>"; };
+		F2D8A859243C0BE200A37852 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F2D8A85A243C0BE200A37852 /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		F2D8A85B243C0BE200A37852 /* LevelFiveGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFiveGame.swift; sourceTree = "<group>"; };
+		F2D8A85C243C0BE200A37852 /* LevelFiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFiveViewController.swift; sourceTree = "<group>"; };
+		F2D8A85D243C0BE200A37852 /* LevelSixGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSixGame.swift; sourceTree = "<group>"; };
+		F2D8A85E243C0BE200A37852 /* LevelSixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSixViewController.swift; sourceTree = "<group>"; };
+		F2EC384D243C27B3009E89AB /* LevelFiveGamePt2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFiveGamePt2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +98,8 @@
 		F2AB435D240E239D002CE1E7 /* Cosmic_Number_Line */ = {
 			isa = PBXGroup;
 			children = (
+				F2D8A859243C0BE200A37852 /* Main.storyboard */,
+				F2D8A85A243C0BE200A37852 /* SwiftUIView.swift */,
 				F2D3FD9F242A7C430025F91D /* LineBackgroundView.swift */,
 				F2D3FDA0242A7C430025F91D /* TickView.swift */,
 				F2D3FD9D242A7BA40025F91D /* Line.swift */,
@@ -101,10 +117,15 @@
 				F2D3FD99242A78B00025F91D /* LevelTwoViewController.swift */,
 				F29E72612426F9DF00393A44 /* LevelThreeViewController.swift */,
 				F29E72632426F9EB00393A44 /* LevelFourViewController.swift */,
+				F2D8A85C243C0BE200A37852 /* LevelFiveViewController.swift */,
+				F2D8A85E243C0BE200A37852 /* LevelSixViewController.swift */,
 				F29E72672427063C00393A44 /* LevelOneGame.swift */,
+				F2EC384D243C27B3009E89AB /* LevelFiveGamePt2.swift */,
 				F2D3FD9B242A79830025F91D /* LevelTwoGame.swift */,
 				F29E727B2427191E00393A44 /* LevelThreeGame.swift */,
 				F29E727C2427191E00393A44 /* LevelFourGame.swift */,
+				F2D8A85B243C0BE200A37852 /* LevelFiveGame.swift */,
+				F2D8A85D243C0BE200A37852 /* LevelSixGame.swift */,
 			);
 			path = Cosmic_Number_Line;
 			sourceTree = "<group>";
@@ -170,6 +191,7 @@
 				F2AB436B240E239F002CE1E7 /* LaunchScreen.storyboard in Resources */,
 				F2AB4368240E239F002CE1E7 /* Assets.xcassets in Resources */,
 				F2AB4366240E239D002CE1E7 /* Main.storyboard in Resources */,
+				F2D8A85F243C0BE200A37852 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,13 +202,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2EC384E243C27B3009E89AB /* LevelFiveGamePt2.swift in Sources */,
 				F2D3FD9A242A78B00025F91D /* LevelTwoViewController.swift in Sources */,
+				F2D8A861243C0BE200A37852 /* LevelFiveGame.swift in Sources */,
+				F2D8A863243C0BE200A37852 /* LevelSixGame.swift in Sources */,
 				F29E72952427248900393A44 /* CorrectPopUpViewController.swift in Sources */,
+				F2D8A860243C0BE200A37852 /* SwiftUIView.swift in Sources */,
 				F2AB4399240F3433002CE1E7 /* LevelSelectorViewController.swift in Sources */,
 				F29E72682427063C00393A44 /* LevelOneGame.swift in Sources */,
 				F29E72962427248900393A44 /* IncorrectPopUpViewController.swift in Sources */,
+				F2D8A864243C0BE200A37852 /* LevelSixViewController.swift in Sources */,
 				F2D3FDA2242A7C430025F91D /* TickView.swift in Sources */,
 				F29E725E2426D50A00393A44 /* LevelOneViewController.swift in Sources */,
+				F2D8A862243C0BE200A37852 /* LevelFiveViewController.swift in Sources */,
 				F2D3FDA1242A7C430025F91D /* LineBackgroundView.swift in Sources */,
 				F2AB4363240E239D002CE1E7 /* ViewController.swift in Sources */,
 				F29E72642426F9EB00393A44 /* LevelFourViewController.swift in Sources */,

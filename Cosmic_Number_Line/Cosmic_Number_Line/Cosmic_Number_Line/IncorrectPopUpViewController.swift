@@ -34,6 +34,12 @@ class IncorrectPopUpViewController: UIViewController {
     var previousFiveNum1:Int=0
     var previousFiveNum2:Int=0
     
+    var previousP2Five = false
+    var previousP2FiveVCNum:Int=0
+    var previousP2FiveSelectedNum:Int=0
+    var previousP2FiveNum1:Int=0
+    var previousP2FiveNum2:Int=0
+    
     var previousSix = false
     var previousSixVCNum:Int=0
     var previousSixSelectedNum:Int=0
@@ -92,7 +98,15 @@ class IncorrectPopUpViewController: UIViewController {
             self.showAnimate()
         }
         
-        // If the user is playing level five
+        // If the user is playing level fivept2
+        // no hint will be provided
+            
+        else if (previousP2Five == true) {
+            tryagainhint.text = ""
+            self.showAnimate()
+        }
+        
+        // If the user is playing level six
         // no hint will be provided
         else if (previousSix == true) {
             tryagainhint.text = "You were on number \(previousSixSelectedNum)"
@@ -133,6 +147,12 @@ class IncorrectPopUpViewController: UIViewController {
             levelVC.num1=previousFiveNum1
             levelVC.num2=previousFiveNum2
         }
+        else if (previousP2Five == true) {
+            let levelVC:LevelFiveGamePt2=segue.destination as! LevelFiveGamePt2
+            levelVC.desiredNumber=previousP2FiveVCNum
+            levelVC.num1=previousP2FiveNum1
+            levelVC.num2=previousP2FiveNum2
+        }
         else if (previousSix == true) {
             let levelVC:LevelSixGame=segue.destination as! LevelSixGame
             levelVC.desiredNumber=previousSixVCNum
@@ -160,6 +180,9 @@ class IncorrectPopUpViewController: UIViewController {
         }
         if (previousFive == true) {
             performSegue(withIdentifier: "tryAgainToLevelFive", sender: self)
+        }
+        if (previousP2Five == true) {
+            performSegue(withIdentifier: "tryAgainToLevelFiveP2", sender: self)
         }
         if (previousSix == true) {
             performSegue(withIdentifier: "tryAgainToLevelSix", sender: self)

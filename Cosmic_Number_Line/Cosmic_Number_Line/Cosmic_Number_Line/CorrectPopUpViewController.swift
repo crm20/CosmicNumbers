@@ -13,6 +13,7 @@ class CorrectPopUpViewController: UIViewController {
     var parentThreeVC:LevelThreeGame?=nil
     var parentFourVC:LevelFourGame?=nil
     var parentFiveVC:LevelFiveGame?=nil
+    var parentFivePt2VC:LevelFiveGamePt2?=nil
     var parentSixVC:LevelSixGame?=nil
     var numLevelsComplete:Int=0
     
@@ -49,6 +50,11 @@ class CorrectPopUpViewController: UIViewController {
             parentFourVC?.removePopOverView()
         }
         if((parentFiveVC) != nil)
+        {
+            performSegue(withIdentifier: "backToLevelFive", sender: self)
+            parentFiveVC?.removePopOverView()
+        }
+        if((parentFivePt2VC) != nil)
         {
             performSegue(withIdentifier: "backToLevelFive", sender: self)
             parentFiveVC?.removePopOverView()

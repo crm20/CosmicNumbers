@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad10_5" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1365,7 +1365,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7e-Xf-6g9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Kre-kz-ik4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4045" y="-463"/>
+            <point key="canvasLocation" x="4546" y="-465"/>
         </scene>
         <!--Incorrect Pop Up View Controller-->
         <scene sceneID="Voa-jD-W9z">
@@ -1429,11 +1429,12 @@
                         <segue destination="DNd-C7-dKJ" kind="presentation" identifier="tryAgainToLevelFour" modalPresentationStyle="fullScreen" id="0BI-nU-XXW"/>
                         <segue destination="jVN-gh-pge" kind="presentation" identifier="tryAgainToLevelFive" modalPresentationStyle="fullScreen" id="IJa-2Y-tuQ"/>
                         <segue destination="Des-jB-XTm" kind="presentation" identifier="tryAgainToLevelSix" modalPresentationStyle="fullScreen" id="1TF-v4-wrk"/>
+                        <segue destination="SuM-Zd-9Pa" kind="presentation" identifier="tryAgainToLevelFiveP2" modalPresentationStyle="fullScreen" id="psy-Y8-IZO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZf-sw-Y1a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3988" y="1831"/>
+            <point key="canvasLocation" x="4546" y="1859"/>
         </scene>
         <!--Level Five View Controller-->
         <scene sceneID="Isy-0v-KRY">
@@ -1591,7 +1592,7 @@
                                 <color key="backgroundColor" red="0.42849117520000002" green="0.174444288" blue="0.5652055144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag Astronaut Tommy to the." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJG-M6-djA" userLabel="Astronaut Place Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag Astronaut Tommy to the." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJG-M6-djA" userLabel="Astronaut Place Label">
                                 <rect key="frame" x="334" y="193" width="444" height="38.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1666,8 +1667,8 @@
                         <outlet property="lineRef" destination="ldO-nI-UzP" id="LhB-mQ-eER"/>
                         <outlet property="submitBtn" destination="1NT-fg-3iy" id="lzg-mH-xgi"/>
                         <outlet property="tutorial" destination="TP0-Rn-8UJ" id="DlM-R6-M5Z"/>
-                        <segue destination="MJm-5n-ODZ" kind="presentation" identifier="toCongrats" modalPresentationStyle="fullScreen" id="lOC-eB-qzU"/>
                         <segue destination="TKS-Ri-53Q" kind="presentation" identifier="toTryAgain" modalPresentationStyle="fullScreen" id="bZg-KW-d35"/>
+                        <segue destination="SuM-Zd-9Pa" kind="presentation" identifier="toPart2" modalPresentationStyle="fullScreen" id="haU-Di-A3R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qY3-Ow-DLy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1677,7 +1678,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2494" y="1773"/>
+            <point key="canvasLocation" x="2472" y="1764"/>
         </scene>
         <!--Level Six View Controller-->
         <scene sceneID="yew-1P-l7O">
@@ -1783,7 +1784,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nck-Ot-WIV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Kpy-Oq-dDG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1306" y="2387"/>
+            <point key="canvasLocation" x="1652" y="2396"/>
         </scene>
         <!--Level Five Game Scene-->
         <scene sceneID="DAI-Gg-z4L">
@@ -1812,8 +1813,8 @@
                                     <segue destination="7hs-oM-AxL" kind="presentation" modalPresentationStyle="fullScreen" id="AIT-2H-YLC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqc-an-dFz">
-                                <rect key="frame" x="10" y="191" width="150" height="61"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qqc-an-dFz">
+                                <rect key="frame" x="10" y="191" width="150" height="80"/>
                                 <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="Back">
                                     <accessibilityTraits key="traits" none="YES"/>
@@ -1882,17 +1883,18 @@
                         <constraints>
                             <constraint firstItem="Prg-3A-o1Z" firstAttribute="leading" secondItem="Zw0-cH-FaB" secondAttribute="leading" id="3lP-Be-yiB"/>
                             <constraint firstAttribute="bottom" secondItem="ZdA-fM-OMn" secondAttribute="bottom" constant="673" id="4u2-Qw-8Fb"/>
-                            <constraint firstItem="Qqc-an-dFz" firstAttribute="leading" secondItem="I9R-Vj-khl" secondAttribute="leading" constant="10" id="5R3-f5-hRm"/>
                             <constraint firstItem="tNl-tm-ZKA" firstAttribute="leading" secondItem="I9R-Vj-khl" secondAttribute="leading" constant="10" id="Fas-7t-Pdy"/>
                             <constraint firstItem="Udn-jU-h9D" firstAttribute="centerY" secondItem="Zw0-cH-FaB" secondAttribute="centerY" constant="85" id="INr-AZ-UNc"/>
                             <constraint firstAttribute="trailing" secondItem="Prg-3A-o1Z" secondAttribute="trailing" id="NwL-49-bY1"/>
                             <constraint firstItem="4j3-gV-BBO" firstAttribute="centerX" secondItem="Zw0-cH-FaB" secondAttribute="centerX" id="QOv-jq-OdZ"/>
+                            <constraint firstItem="ZdA-fM-OMn" firstAttribute="top" secondItem="Zw0-cH-FaB" secondAttribute="top" id="Skd-mI-Vn7"/>
                             <constraint firstItem="4j3-gV-BBO" firstAttribute="top" secondItem="ZdA-fM-OMn" secondAttribute="bottom" constant="32" id="UOi-OT-McB"/>
                             <constraint firstItem="Q45-7a-rvk" firstAttribute="leading" secondItem="I9R-Vj-khl" secondAttribute="leading" constant="30" id="ZRh-j2-8jz"/>
                             <constraint firstItem="I9R-Vj-khl" firstAttribute="bottom" secondItem="1J5-u4-XrA" secondAttribute="bottom" constant="50" id="eBP-GJ-Thj"/>
-                            <constraint firstItem="I9R-Vj-khl" firstAttribute="trailing" secondItem="1J5-u4-XrA" secondAttribute="trailing" constant="50" id="fHc-GR-PiW"/>
+                            <constraint firstItem="Qqc-an-dFz" firstAttribute="leading" secondItem="I9R-Vj-khl" secondAttribute="leading" constant="10" id="ewp-ku-NgG"/>
                             <constraint firstItem="Q45-7a-rvk" firstAttribute="top" secondItem="I9R-Vj-khl" secondAttribute="top" constant="30" id="hBG-nO-Htc"/>
                             <constraint firstItem="ZdA-fM-OMn" firstAttribute="leading" secondItem="Prg-3A-o1Z" secondAttribute="leading" id="hWN-xo-RfU"/>
+                            <constraint firstItem="I9R-Vj-khl" firstAttribute="trailing" secondItem="1J5-u4-XrA" secondAttribute="trailing" constant="50" id="hkL-YZ-wqo"/>
                             <constraint firstItem="tNl-tm-ZKA" firstAttribute="top" secondItem="Qqc-an-dFz" secondAttribute="bottom" constant="40" id="k8i-zY-5on"/>
                             <constraint firstItem="Qqc-an-dFz" firstAttribute="top" secondItem="ZdA-fM-OMn" secondAttribute="bottom" constant="30" id="kKD-im-V7Z"/>
                             <constraint firstItem="Udn-jU-h9D" firstAttribute="centerX" secondItem="Zw0-cH-FaB" secondAttribute="centerX" id="rUP-X6-voQ"/>
@@ -1921,22 +1923,147 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2472" y="2504"/>
+            <point key="canvasLocation" x="2470" y="2500"/>
+        </scene>
+        <!--Level Five Game Pt2-->
+        <scene sceneID="jDY-Ds-DfH">
+            <objects>
+                <viewController id="SuM-Zd-9Pa" customClass="LevelFiveGamePt2" customModule="Cosmic_Number_Line" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yhW-jb-8UU">
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars" translatesAutoresizingMaskIntoConstraints="NO" id="fuy-Cr-3D3">
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0Y-wA-fP6">
+                                <rect key="frame" x="10" y="311" width="150" height="80"/>
+                                <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="WuU-PR-saa"/>
+                                    <constraint firstAttribute="height" constant="80" id="rnV-Vx-lW2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="Tutorial">
+                                    <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zVD-no-pGj" kind="unwind" unwindAction="unwindToLevelFiveTutorialSelector:" id="LLH-MP-WN8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5b7-o9-UR2">
+                                <rect key="frame" x="10" y="191" width="150" height="80"/>
+                                <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Back">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="3a9-eE-aoy"/>
+                                    <constraint firstAttribute="width" constant="150" id="oDG-d7-dOD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="Levels">
+                                    <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zVD-no-pGj" kind="unwind" unwindAction="unwindToLevelSelector:" id="2le-Te-F9G"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3M-Iz-dZo" userLabel="GrayArea">
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="161"/>
+                                <color key="backgroundColor" red="0.42849117520000002" green="0.174444288" blue="0.5652055144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag Astronaut Tommy to the." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erP-yA-3h8" userLabel="Astronaut Place Label">
+                                <rect key="frame" x="334" y="193" width="444" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="866" verticalHuggingPriority="150" translatesAutoresizingMaskIntoConstraints="NO" id="gN7-h3-lzR" customClass="Line" customModule="Cosmic_Number_Line" customModuleProvider="target">
+                                <rect key="frame" x="123" y="427" width="866" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="1tY-ag-CTk"/>
+                                    <constraint firstAttribute="width" constant="866" id="wdc-di-slE"/>
+                                </constraints>
+                            </view>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="TcN-g8-WOX">
+                                <rect key="frame" x="30" y="30" width="77" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Astronaut Tommy">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Xvw-z8-w7V" appends="YES" id="6is-5S-NaS"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2o-5I-zb3">
+                                <rect key="frame" x="912" y="704" width="150" height="80"/>
+                                <color key="backgroundColor" red="0.42849117520000002" green="0.174444288" blue="0.5652055144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="JDo-Gb-wKN"/>
+                                    <constraint firstAttribute="height" constant="80" id="z1E-IT-Uax"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="Submit:" destination="SuM-Zd-9Pa" eventType="touchUpInside" id="cbw-Li-Ij0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="b0Y-wA-fP6" firstAttribute="leading" secondItem="D6s-ah-Ocz" secondAttribute="leading" constant="10" id="1KY-vG-loF"/>
+                            <constraint firstItem="gN7-h3-lzR" firstAttribute="centerY" secondItem="yhW-jb-8UU" secondAttribute="centerY" constant="85" id="INR-Bo-sCb"/>
+                            <constraint firstItem="D6s-ah-Ocz" firstAttribute="bottom" secondItem="X2o-5I-zb3" secondAttribute="bottom" constant="50" id="KPq-ra-ZB2"/>
+                            <constraint firstItem="b0Y-wA-fP6" firstAttribute="top" secondItem="5b7-o9-UR2" secondAttribute="bottom" constant="40" id="KRz-Ud-Vym"/>
+                            <constraint firstItem="D6s-ah-Ocz" firstAttribute="trailing" secondItem="X2o-5I-zb3" secondAttribute="trailing" constant="50" id="LsU-eD-flW"/>
+                            <constraint firstItem="M3M-Iz-dZo" firstAttribute="leading" secondItem="yhW-jb-8UU" secondAttribute="leading" id="NAl-uy-xC6"/>
+                            <constraint firstItem="gN7-h3-lzR" firstAttribute="centerX" secondItem="yhW-jb-8UU" secondAttribute="centerX" id="OCw-eN-gVg"/>
+                            <constraint firstItem="fuy-Cr-3D3" firstAttribute="leading" secondItem="yhW-jb-8UU" secondAttribute="leading" id="Tsg-aB-FHr"/>
+                            <constraint firstAttribute="trailing" secondItem="M3M-Iz-dZo" secondAttribute="trailing" id="Ye2-aj-ic8"/>
+                            <constraint firstItem="M3M-Iz-dZo" firstAttribute="top" secondItem="yhW-jb-8UU" secondAttribute="top" id="a81-I6-YaA"/>
+                            <constraint firstAttribute="bottom" secondItem="M3M-Iz-dZo" secondAttribute="bottom" constant="673" id="cJS-yz-uxH"/>
+                            <constraint firstItem="5b7-o9-UR2" firstAttribute="top" secondItem="M3M-Iz-dZo" secondAttribute="bottom" constant="30" id="d1m-J8-R9r"/>
+                            <constraint firstAttribute="bottom" secondItem="fuy-Cr-3D3" secondAttribute="bottom" id="fc6-ie-Fw0"/>
+                            <constraint firstAttribute="trailing" secondItem="fuy-Cr-3D3" secondAttribute="trailing" id="gXN-3x-XpW"/>
+                            <constraint firstItem="erP-yA-3h8" firstAttribute="top" secondItem="M3M-Iz-dZo" secondAttribute="bottom" constant="32" id="p3y-Wc-WbE"/>
+                            <constraint firstItem="fuy-Cr-3D3" firstAttribute="top" secondItem="yhW-jb-8UU" secondAttribute="top" id="rzP-Op-EIf"/>
+                            <constraint firstItem="5b7-o9-UR2" firstAttribute="leading" secondItem="D6s-ah-Ocz" secondAttribute="leading" constant="10" id="s9C-X1-NY5"/>
+                            <constraint firstItem="erP-yA-3h8" firstAttribute="centerX" secondItem="yhW-jb-8UU" secondAttribute="centerX" id="u7d-gE-Oc0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D6s-ah-Ocz"/>
+                    </view>
+                    <connections>
+                        <outlet property="astronaut" destination="TcN-g8-WOX" id="0VR-h3-hCU"/>
+                        <outlet property="astronautPlaceLabel" destination="erP-yA-3h8" id="MeY-Qe-Akz"/>
+                        <outlet property="levels" destination="5b7-o9-UR2" id="C8Q-qr-5PJ"/>
+                        <outlet property="lineRef" destination="gN7-h3-lzR" id="Fv4-Q9-D7i"/>
+                        <outlet property="submitBtn" destination="X2o-5I-zb3" id="L1a-5u-pZx"/>
+                        <outlet property="tutorial" destination="b0Y-wA-fP6" id="gjm-pY-nwk"/>
+                        <segue destination="TKS-Ri-53Q" kind="presentation" identifier="toTryAgain" modalPresentationStyle="fullScreen" id="fpq-vR-pXQ"/>
+                        <segue destination="MJm-5n-ODZ" kind="presentation" identifier="toCongrats" modalPresentationStyle="fullScreen" id="z3C-X3-ccf"/>
+                    </connections>
+                </viewController>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Xvw-z8-w7V">
+                    <connections>
+                        <action selector="handlepanWithRecognizer:" destination="SuM-Zd-9Pa" id="Gn6-XQ-hob"/>
+                    </connections>
+                </panGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6uL-yI-XvJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zVD-no-pGj" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3551" y="1763"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="y3I-PA-nxF"/>
-        <segue reference="AIT-2H-YLC"/>
-        <segue reference="IJa-2Y-tuQ"/>
-        <segue reference="oh3-qG-MrA"/>
-        <segue reference="V0D-ua-etB"/>
-        <segue reference="Gng-uG-hzv"/>
-        <segue reference="0BI-nU-XXW"/>
-        <segue reference="yq0-T8-0b5"/>
-        <segue reference="NAN-ke-7im"/>
-        <segue reference="7lF-yc-sfR"/>
-        <segue reference="6WJ-ia-6lC"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="astronaut" width="77" height="87"/>
         <image name="greatjob" width="575" height="189"/>
@@ -1946,4 +2073,18 @@
         <image name="title" width="650" height="248"/>
         <image name="tryagain" width="572" height="172"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="psy-Y8-IZO"/>
+        <segue reference="1TF-v4-wrk"/>
+        <segue reference="AIT-2H-YLC"/>
+        <segue reference="IJa-2Y-tuQ"/>
+        <segue reference="oh3-qG-MrA"/>
+        <segue reference="fpq-vR-pXQ"/>
+        <segue reference="z3C-X3-ccf"/>
+        <segue reference="0BI-nU-XXW"/>
+        <segue reference="yq0-T8-0b5"/>
+        <segue reference="NAN-ke-7im"/>
+        <segue reference="7lF-yc-sfR"/>
+        <segue reference="bRx-7X-9Oe"/>
+    </inferredMetricsTieBreakers>
 </document>
