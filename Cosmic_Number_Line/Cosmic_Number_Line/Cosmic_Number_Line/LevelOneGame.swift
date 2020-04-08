@@ -98,7 +98,7 @@ class LevelOneGame: UIViewController {
             )
             
             // Determining the initial location (x, y) of [astronaut]
-            if (i == num1) {
+            if (i == desiredNumber) {
                 // Setting [astronaut] to the correct location with correct dimensions.
                 // Math explanation:
                 // x:
