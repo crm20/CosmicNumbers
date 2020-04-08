@@ -87,6 +87,8 @@ class Line: UIView {
                 (self.parentViewController as! LevelFourGame).initializeNumberTexts()
             } else if let parentVC = parentVC as? LevelFiveGame {
                 (self.parentViewController as! LevelFiveGame).initializeNumberTexts()
+            } else if let parentVC = parentVC as? LevelFiveGamePt2 {
+                (self.parentViewController as! LevelFiveGamePt2).initializeNumberTexts()
             } else if let parentVC = parentVC as? LevelSixGame {
                 (self.parentViewController as! LevelSixGame).initializeNumberTexts()
                 
