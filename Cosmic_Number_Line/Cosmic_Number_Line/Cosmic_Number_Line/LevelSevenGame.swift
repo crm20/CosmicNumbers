@@ -1,8 +1,8 @@
 //
-//  LevelSixGame.swift
+//  LevelSevenGame.swift
 //  Cosmic_Number_Line
 //
-//  Created by hyunc on 4/2/20.
+//  Created by hyunc on 3/31/20.
 //  Copyright © 2020 Cosmic_Numbers. All rights reserved.
 //
 
@@ -10,9 +10,10 @@ import UIKit
 import AVFoundation
 
 //class ViewController: UIViewController {
-class LevelSixGame: UIViewController {
+class LevelSevenGame: UIViewController {
     
     // Reference to the visual objects
+    
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var tutorial: UIButton!
     @IBOutlet weak var levels: UIButton!
@@ -20,15 +21,14 @@ class LevelSixGame: UIViewController {
     @IBOutlet weak var lineRef: Line!
     @IBOutlet weak var submitBtn: UIButton!
     
-    
     var previousVC:UIViewController?=nil
     var previousVCSuccess:UIViewController?=nil
     var popOverVC:CorrectPopUpViewController?=nil
     var i = 0
     var ranges=[(CGFloat(0.0),CGFloat(0.0))]
-    var num1 = Int.random(in: 0...3)
-    var num2 = Int.random(in: 0...2)
-    lazy var desiredNumber = num1+num2
+    var num1 = Int.random(in: 0...5)
+    lazy var num2 = Int.random(in: 0...num1)
+    lazy var desiredNumber = num1
     var threshold=10
     var exampleVar:Int=0
     var player: AVAudioPlayer?
@@ -46,7 +46,7 @@ class LevelSixGame: UIViewController {
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true
         //astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) + \(num2)"
-        astronautPlaceLabel.text = "Solve \(num1) + \(num2)!"
+        astronautPlaceLabel.text = "Solve \(num1) - \(num2)!\nFirst Drag Astronaut Tommy to tick \(num1)"
         astronautOriginalPosition = astronaut.center
     }
     
@@ -74,19 +74,21 @@ class LevelSixGame: UIViewController {
         
         // If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
-            tryAgainVC?.previousSixVCNum=desiredNumber
-            tryAgainVC?.previousSixSelectedNum=selectednumber
-            tryAgainVC?.previousSixNum1=num1
-            tryAgainVC?.previousSixNum2=num2
-            tryAgainVC?.previousSix=true
+            tryAgainVC?.previousSevenVCNum=desiredNumber
+            tryAgainVC?.previousSevenSelectedNum=selectednumber
+            tryAgainVC?.previousSevenNum1=num1
+            tryAgainVC?.previousSevenNum2=num2
+            tryAgainVC?.previousSeven=true
             
         }
         else{
              //If the player answered the question correctly, he/she will play the next round
-            var rightVC = segue.destination as? CorrectPopUpViewController
+            var rightVC = segue.destination as? LevelSevenGamePt2
             if (rightVC != nil){
-                rightVC!.parentSixVC=self
-                rightVC!.numLevelsComplete=self.howManyLevelsAreDone
+                //rightVC!.parentSevenVC=self
+                //rightVC!.numLevelsComplete=self.howManyLevelsAreDone
+                rightVC!.num1 = num1
+                rightVC!.num2 = num2
             }
             else{
                 print("other vc")
@@ -124,7 +126,7 @@ class LevelSixGame: UIViewController {
         }
         self.view.accessibilityElements = [astronautPlaceLabel, astronaut, lineRef, accessibleNumbers, submitBtn, tutorial, levels];
     }
-    
+
     // Handle pan gesture - identify where the player drag the astronaut to
     @IBAction func handlepan(recognizer:UIPanGestureRecognizer) {
         var focusedView=UIAccessibility.focusedElement(using:
@@ -274,7 +276,7 @@ class LevelSixGame: UIViewController {
         if (astronaut_positionX >= lineRef.points[desiredNumber].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[desiredNumber].bounds.maxX+minXOfLine+40
             && astronaut_positionY >= maxYOfLine-70 &&
             astronaut_positionY < maxYOfLine+100) {
-            performSegue(withIdentifier: "toCongrats", sender: self)
+            performSegue(withIdentifier: "toPart2", sender: self)
             
         }
         

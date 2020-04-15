@@ -31,8 +31,13 @@
 		F2D8A860243C0BE200A37852 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85A243C0BE200A37852 /* SwiftUIView.swift */; };
 		F2D8A861243C0BE200A37852 /* LevelFiveGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85B243C0BE200A37852 /* LevelFiveGame.swift */; };
 		F2D8A862243C0BE200A37852 /* LevelFiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85C243C0BE200A37852 /* LevelFiveViewController.swift */; };
-		F2D8A863243C0BE200A37852 /* LevelSixGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85D243C0BE200A37852 /* LevelSixGame.swift */; };
 		F2D8A864243C0BE200A37852 /* LevelSixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8A85E243C0BE200A37852 /* LevelSixViewController.swift */; };
+		F2E40D202446958000802A86 /* LevelSevenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40D1F2446958000802A86 /* LevelSevenViewController.swift */; };
+		F2E40D22244695AE00802A86 /* LevelSevenGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40D21244695AE00802A86 /* LevelSevenGame.swift */; };
+		F2E40D2424469CC000802A86 /* LevelSixGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40D2324469CC000802A86 /* LevelSixGame.swift */; };
+		F2E40D262447063300802A86 /* LevelEightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40D252447063300802A86 /* LevelEightViewController.swift */; };
+		F2E40D2A244708B600802A86 /* LevelSevenGamePt2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40D29244708B600802A86 /* LevelSevenGamePt2.swift */; };
+		F2E40D2C2447144600802A86 /* LevelEightGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E40D2B2447144600802A86 /* LevelEightGame.swift */; };
 		F2EC384E243C27B3009E89AB /* LevelFiveGamePt2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC384D243C27B3009E89AB /* LevelFiveGamePt2.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,8 +68,13 @@
 		F2D8A85A243C0BE200A37852 /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		F2D8A85B243C0BE200A37852 /* LevelFiveGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFiveGame.swift; sourceTree = "<group>"; };
 		F2D8A85C243C0BE200A37852 /* LevelFiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFiveViewController.swift; sourceTree = "<group>"; };
-		F2D8A85D243C0BE200A37852 /* LevelSixGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSixGame.swift; sourceTree = "<group>"; };
 		F2D8A85E243C0BE200A37852 /* LevelSixViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSixViewController.swift; sourceTree = "<group>"; };
+		F2E40D1F2446958000802A86 /* LevelSevenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSevenViewController.swift; sourceTree = "<group>"; };
+		F2E40D21244695AE00802A86 /* LevelSevenGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSevenGame.swift; sourceTree = "<group>"; };
+		F2E40D2324469CC000802A86 /* LevelSixGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSixGame.swift; sourceTree = "<group>"; };
+		F2E40D252447063300802A86 /* LevelEightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelEightViewController.swift; sourceTree = "<group>"; };
+		F2E40D29244708B600802A86 /* LevelSevenGamePt2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSevenGamePt2.swift; sourceTree = "<group>"; };
+		F2E40D2B2447144600802A86 /* LevelEightGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelEightGame.swift; sourceTree = "<group>"; };
 		F2EC384D243C27B3009E89AB /* LevelFiveGamePt2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFiveGamePt2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,18 +124,23 @@
 				F2AB436C240E239F002CE1E7 /* Info.plist */,
 				F2AB4398240F3433002CE1E7 /* LevelSelectorViewController.swift */,
 				F29E725D2426D50A00393A44 /* LevelOneViewController.swift */,
-				F2D3FD99242A78B00025F91D /* LevelTwoViewController.swift */,
-				F29E72612426F9DF00393A44 /* LevelThreeViewController.swift */,
-				F29E72632426F9EB00393A44 /* LevelFourViewController.swift */,
-				F2D8A85C243C0BE200A37852 /* LevelFiveViewController.swift */,
-				F2D8A85E243C0BE200A37852 /* LevelSixViewController.swift */,
 				F29E72672427063C00393A44 /* LevelOneGame.swift */,
-				F2EC384D243C27B3009E89AB /* LevelFiveGamePt2.swift */,
+				F2D3FD99242A78B00025F91D /* LevelTwoViewController.swift */,
 				F2D3FD9B242A79830025F91D /* LevelTwoGame.swift */,
+				F29E72612426F9DF00393A44 /* LevelThreeViewController.swift */,
 				F29E727B2427191E00393A44 /* LevelThreeGame.swift */,
+				F29E72632426F9EB00393A44 /* LevelFourViewController.swift */,
 				F29E727C2427191E00393A44 /* LevelFourGame.swift */,
+				F2D8A85C243C0BE200A37852 /* LevelFiveViewController.swift */,
 				F2D8A85B243C0BE200A37852 /* LevelFiveGame.swift */,
-				F2D8A85D243C0BE200A37852 /* LevelSixGame.swift */,
+				F2EC384D243C27B3009E89AB /* LevelFiveGamePt2.swift */,
+				F2D8A85E243C0BE200A37852 /* LevelSixViewController.swift */,
+				F2E40D2324469CC000802A86 /* LevelSixGame.swift */,
+				F2E40D1F2446958000802A86 /* LevelSevenViewController.swift */,
+				F2E40D21244695AE00802A86 /* LevelSevenGame.swift */,
+				F2E40D29244708B600802A86 /* LevelSevenGamePt2.swift */,
+				F2E40D252447063300802A86 /* LevelEightViewController.swift */,
+				F2E40D2B2447144600802A86 /* LevelEightGame.swift */,
 			);
 			path = Cosmic_Number_Line;
 			sourceTree = "<group>";
@@ -204,12 +219,15 @@
 			files = (
 				F2EC384E243C27B3009E89AB /* LevelFiveGamePt2.swift in Sources */,
 				F2D3FD9A242A78B00025F91D /* LevelTwoViewController.swift in Sources */,
+				F2E40D22244695AE00802A86 /* LevelSevenGame.swift in Sources */,
 				F2D8A861243C0BE200A37852 /* LevelFiveGame.swift in Sources */,
-				F2D8A863243C0BE200A37852 /* LevelSixGame.swift in Sources */,
 				F29E72952427248900393A44 /* CorrectPopUpViewController.swift in Sources */,
+				F2E40D202446958000802A86 /* LevelSevenViewController.swift in Sources */,
+				F2E40D2A244708B600802A86 /* LevelSevenGamePt2.swift in Sources */,
 				F2D8A860243C0BE200A37852 /* SwiftUIView.swift in Sources */,
 				F2AB4399240F3433002CE1E7 /* LevelSelectorViewController.swift in Sources */,
 				F29E72682427063C00393A44 /* LevelOneGame.swift in Sources */,
+				F2E40D2424469CC000802A86 /* LevelSixGame.swift in Sources */,
 				F29E72962427248900393A44 /* IncorrectPopUpViewController.swift in Sources */,
 				F2D8A864243C0BE200A37852 /* LevelSixViewController.swift in Sources */,
 				F2D3FDA2242A7C430025F91D /* TickView.swift in Sources */,
@@ -217,8 +235,10 @@
 				F2D8A862243C0BE200A37852 /* LevelFiveViewController.swift in Sources */,
 				F2D3FDA1242A7C430025F91D /* LineBackgroundView.swift in Sources */,
 				F2AB4363240E239D002CE1E7 /* ViewController.swift in Sources */,
+				F2E40D2C2447144600802A86 /* LevelEightGame.swift in Sources */,
 				F29E72642426F9EB00393A44 /* LevelFourViewController.swift in Sources */,
 				F2AB435F240E239D002CE1E7 /* AppDelegate.swift in Sources */,
+				F2E40D262447063300802A86 /* LevelEightViewController.swift in Sources */,
 				F2D3FD9E242A7BA40025F91D /* Line.swift in Sources */,
 				F29E727E2427191F00393A44 /* LevelFourGame.swift in Sources */,
 				F29E727D2427191F00393A44 /* LevelThreeGame.swift in Sources */,

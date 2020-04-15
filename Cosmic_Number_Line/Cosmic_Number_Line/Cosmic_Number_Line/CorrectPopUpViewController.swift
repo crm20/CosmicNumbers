@@ -15,6 +15,9 @@ class CorrectPopUpViewController: UIViewController {
     var parentFiveVC:LevelFiveGame?=nil
     var parentFivePt2VC:LevelFiveGamePt2?=nil
     var parentSixVC:LevelSixGame?=nil
+    var parentSevenVC:LevelSevenGame?=nil
+    var parentSevenPt2VC:LevelSevenGamePt2?=nil
+    var parentEightVC:LevelEightGame?=nil
     var numLevelsComplete:Int=0
     
     // Directs the player to level selection page
@@ -64,6 +67,21 @@ class CorrectPopUpViewController: UIViewController {
             performSegue(withIdentifier: "backToLevelSix", sender: self)
             parentSixVC?.removePopOverView()
         }
+        if((parentSevenVC) != nil)
+        {
+            performSegue(withIdentifier: "backToLevelSeven", sender: self)
+            parentSevenVC?.removePopOverView()
+        }
+        if((parentSevenPt2VC) != nil)
+        {
+            performSegue(withIdentifier: "backToLevelSeven", sender: self)
+            parentSevenVC?.removePopOverView()
+        }
+        if((parentEightVC) != nil)
+        {
+            performSegue(withIdentifier: "backToLevelEight", sender: self)
+            parentEightVC?.removePopOverView()
+        }
     }
     
     // Directs the player to the next level of game
@@ -106,6 +124,20 @@ class CorrectPopUpViewController: UIViewController {
         if((parentSixVC) != nil)
         {
             if let destinationVC = segue.destination as? LevelSixGame{
+                destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
+                destinationVC.previousVC=self
+            }
+        }
+        if((parentSevenVC) != nil)
+        {
+            if let destinationVC = segue.destination as? LevelSevenGame{
+                destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
+                destinationVC.previousVC=self
+            }
+        }
+        if((parentEightVC) != nil)
+        {
+            if let destinationVC = segue.destination as? LevelEightGame{
                 destinationVC.howManyLevelsAreDone = self.numLevelsComplete + 1
                 destinationVC.previousVC=self
             }
