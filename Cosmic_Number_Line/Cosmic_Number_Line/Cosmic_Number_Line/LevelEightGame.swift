@@ -39,6 +39,7 @@ class LevelEightGame: UIViewController {
     var mostrecentTick:UIView?=nil
     var accessibleNumbers:[UIView]=[]
     var astronautOriginalPosition = CGPoint(x:0,y:0)
+    var newSound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,15 @@ class LevelEightGame: UIViewController {
         
         // If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
+            let path = Bundle.main.path(forResource: "wrong.wav", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             tryAgainVC?.previousEightVCNum=desiredNumber
             tryAgainVC?.previousEightSelectedNum=selectednumber
             tryAgainVC?.previousEightNum1=num1
@@ -83,6 +93,15 @@ class LevelEightGame: UIViewController {
         }
         else{
              //If the player answered the question correctly, he/she will play the next round
+            let path = Bundle.main.path(forResource: "correct.mp3", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             var rightVC = segue.destination as? CorrectPopUpViewController
             if (rightVC != nil){
                 rightVC!.parentEightVC=self
