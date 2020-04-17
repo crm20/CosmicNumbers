@@ -102,7 +102,7 @@ class LevelOneViewController: UIViewController {
                 initializeNumberTexts();
             }
             nextBtn.isEnabled = false;
-            changeInstructions(newText: "Directly below each tick is a number. This number tells you where you are on the number line. Drag your finger in a straight line down from any tick to the its number. Tap on any number once you find it!");
+            changeInstructions(newText: "Directly below each tick is a number. This number tells you where you are on the number line. Drag your finger in a straight line down from any tick and tap the number!");
             break;
             
         // Case 2: Renders [astronaut].
@@ -110,7 +110,7 @@ class LevelOneViewController: UIViewController {
             // Place astronaut Tommy on the number line.
             astronaut.isHidden = false;
             nextBtn.isEnabled = false;
-            changeInstructions(newText: "Astronaut Tommy is on a tick mark. Find the first tick mark then drag your finger to the right to find Astronaut Tommy. Tap on Astronaut Tommy when you find him!");
+            changeInstructions(newText: "Astronaut Tommy is on a tick mark. Find the first tick mark then drag your finger to the right to find Astronaut Tommy. Tap on him when you find him!");
             break;
             
         // Case 3: Renders the buttons.
@@ -127,7 +127,7 @@ class LevelOneViewController: UIViewController {
             levels.isHidden = false;
             nextBtn.setTitle("Finish", for: .normal);
             nextBtn.isEnabled = false;
-            changeInstructions(newText: "You've finished the tutorial! To continue to the game, split tap the next button. If you want to go back to the level selector or redo the tutorial, two buttons have been added on the top, lefthand side of the screen.");
+            changeInstructions(newText: "Congratulations! To continue, split tap the next button. If you want to go to to other levels or redo the tutorial, two buttons have been added on the top, lefthand side of the screen.");
             
             stagesCompleted = stage.five;
             nextBtn.isEnabled = true;
@@ -201,7 +201,7 @@ class LevelOneViewController: UIViewController {
                     threeBtn.isHidden = false;
                     fourBtn.isHidden = false;
                     fiveBtn.isHidden = false;
-                    changeInstructions(newText: "Number buttons are in a horizontal row along the bottom of the screen. Drag your finger to the bottom left corner to find the first number, which is 0. Drag right until you find the same number that Astronaut Tommy is on and split tap it!");
+                    changeInstructions(newText: "Number buttons are in a horizontal row along the bottom of the screen. Drag your finger to the bottom left corner to find the first number, 0. Drag right until you find the same number that Astronaut Tommy is on and split tap it!");
                 }
                 break;
                 
@@ -292,7 +292,7 @@ class LevelOneViewController: UIViewController {
             
             // Initializing the number label's color, text, and accessibility traits.
             label.text = String(i)
-            label.font = UIFont(name: "Arial-BoldMT", size: 50)
+            label.font = UIFont(name: "Arial-BoldMT", size: 40)
             label.textColor = UIColor.white;
             label.isAccessibilityElement = true
             label.accessibilityTraits = UIAccessibilityTraits.playsSound
