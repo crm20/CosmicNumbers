@@ -142,10 +142,9 @@ class LevelThreeGame: UIViewController {
             label.isUserInteractionEnabled = true
             label.accessibilityLabel = String(i)
             accessibleNumbers.append(label)
-            i = i+1
             
             // Determining the initial location (x, y) of [astronaut]
-            if (i == desiredNumber) {
+            if (i == astronautNumber) {
                 // Setting [astronaut] to the correct location with correct dimensions.
                 // Math explanation:
                 // x:
@@ -162,6 +161,8 @@ class LevelThreeGame: UIViewController {
                     y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
                     )
                 }
+            
+            i += 1;
         }
         self.view.accessibilityElements = [question, lineRef, astronaut, accessibleNumbers, smaller, bigger, submitBtn, levels, tutorial];
     }

@@ -20,6 +20,7 @@ class Line: UIView {
     var myOffset:String = ""
     var backgroundView:LineBackgroundView? = nil
     var accessibleTicks:[TickView] = []
+    var tickCoordinates: [CGRect] = [];
     
     // Draw out the number line
     override func draw(_ rec: CGRect) {
@@ -97,10 +98,15 @@ class Line: UIView {
             var myUIView:TickView = TickView(frame:
                 CGRect(
                     x:xdist+(0.5*lineWidth)-(lineWidth/2),
-                    y:baseOfLine-lineHeight,width:lineWidth,
+                    y:baseOfLine-lineHeight,
+                    width:lineWidth,
                     height:lineHeight+(0.5*lineWidth)
                 )
             )
+            
+            // Saving the coordinates of the ticks for future reference.
+            tickCoordinates.append(myUIView.frame);
+            
             myUIView.isAccessibilityElement=true
             myUIView.accessibilityLabel="tick"
             accessibleTicks.append(myUIView)
@@ -110,10 +116,11 @@ class Line: UIView {
             self.bringSubviewToFront(myUIView)
         }
         
-        // Not entirely sure.
         if let parentVC = self.parentViewController {
             if let parentVC = parentVC as? LevelOneGame {
                 (self.parentViewController as! LevelOneGame).initializeNumberTexts()
+//            } else if let parentVC = parentVC as? LevelOneViewController {
+//                (self.parentViewController as! LevelOneViewController).initializeNumberTexts()
             } else if let parentVC = parentVC as? LevelTwoGame {
                 (self.parentViewController as! LevelTwoGame).initializeNumberTexts()
             } else if let parentVC = parentVC as? LevelThreeGame {
@@ -129,6 +136,13 @@ class Line: UIView {
         for tick in accessibleTicks{
             tick.isAccessibilityElement=true
         }
+    }
+    
+    // Getter method to retrieve an array for each tick's coordinates.
+    // [xOffSetFromEdge] refers to the distance between the the leftmost side of the screen to the first tick of the number line.
+    // [numberLineBaseY] refers to the y value of the number line.
+    func getTickCoords() -> [CGRect] {
+        return tickCoordinates;
     }
 }
 

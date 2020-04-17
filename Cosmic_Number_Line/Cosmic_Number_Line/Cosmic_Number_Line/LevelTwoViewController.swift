@@ -12,9 +12,13 @@ class LevelTwoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Level Two Tutorial Loaded")
 
         // Do any additional setup after loading the view.
     }
+    
+    
     
     @IBAction func unwindToLevelTwoTutorialSelector(_ sender: UIStoryboardSegue) {}
 
