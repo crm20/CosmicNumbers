@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		82D09CBC244CE04B00DD7473 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 82D09CBB244CE04B00DD7473 /* wrong.wav */; };
 		82D09CBE244CE05500DD7473 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 82D09CBD244CE05400DD7473 /* correct.mp3 */; };
+		82D09CC0244CFC1C00DD7473 /* TutorialExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D09CBF244CFC1C00DD7473 /* TutorialExample.swift */; };
 		F29E725E2426D50A00393A44 /* LevelOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29E725D2426D50A00393A44 /* LevelOneViewController.swift */; };
 		F29E72622426F9DF00393A44 /* LevelThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29E72612426F9DF00393A44 /* LevelThreeViewController.swift */; };
 		F29E72642426F9EB00393A44 /* LevelFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29E72632426F9EB00393A44 /* LevelFourViewController.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		82D09CBB244CE04B00DD7473 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
 		82D09CBD244CE05400DD7473 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		82D09CBF244CFC1C00DD7473 /* TutorialExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialExample.swift; sourceTree = "<group>"; };
 		F29E725D2426D50A00393A44 /* LevelOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOneViewController.swift; sourceTree = "<group>"; };
 		F29E72612426F9DF00393A44 /* LevelThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelThreeViewController.swift; sourceTree = "<group>"; };
 		F29E72632426F9EB00393A44 /* LevelFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFourViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				F2D8A859243C0BE200A37852 /* Main.storyboard */,
+				82D09CBF244CFC1C00DD7473 /* TutorialExample.swift */,
 				F2D8A85A243C0BE200A37852 /* SwiftUIView.swift */,
 				F2D3FD9F242A7C430025F91D /* LineBackgroundView.swift */,
 				F2D3FDA0242A7C430025F91D /* TickView.swift */,
@@ -243,6 +246,7 @@
 				F29E72642426F9EB00393A44 /* LevelFourViewController.swift in Sources */,
 				F2AB435F240E239D002CE1E7 /* AppDelegate.swift in Sources */,
 				F2E40D262447063300802A86 /* LevelEightViewController.swift in Sources */,
+				82D09CC0244CFC1C00DD7473 /* TutorialExample.swift in Sources */,
 				F2D3FD9E242A7BA40025F91D /* Line.swift in Sources */,
 				F29E727E2427191F00393A44 /* LevelFourGame.swift in Sources */,
 				F29E727D2427191F00393A44 /* LevelThreeGame.swift in Sources */,
