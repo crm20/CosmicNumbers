@@ -23,6 +23,8 @@ class LevelOneViewController: UIViewController {
     @IBOutlet weak var fourBtn: UIButton!
     @IBOutlet weak var fiveBtn: UIButton!
     @IBOutlet weak var instructions: UILabel!
+    @IBOutlet weak var skipBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
     
     // Variables used to determine the correct answer for the buttons..
     /// Note: the [desiredNumber]  can be any value from 0 -5. However, for tutorial sake, it is hardcoded to be three as it forces the player to investigate halfway through the number line before finding Tommy.
@@ -36,22 +38,12 @@ class LevelOneViewController: UIViewController {
     var lineNumberLocations: [CGPoint] = [];
     var tickLocations: [CGRect] = [];
 
-    // Enum that representations the successional stages the player has completed.
+    // Variables for the successional stages/subgoals the player has completed.
     enum stage {
-        case omega
-        case zero
-        case one
-        case two
-        case three
-        case four
-        case five
+        case omega, zero, one, two, three, four, five
     }
-    
-    // Enum that represents the subgoals the player has completed within each stage.
     enum subGoal {
-        case zero
-        case one
-        case three
+        case zero, one
     }
     
     // Variable that represents the amount of stages completed. Initially set to stage zero.
@@ -64,12 +56,16 @@ class LevelOneViewController: UIViewController {
         // Saving the answer buttons into an array
         answerArray = [zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn];
         
-        // Calling the function resetTutorial to hide the IBOutlet's.
-        resetTutorial();
-        
-        // Setting accessibility status.
+        // Setting accessibility status and labels.
         isAccessibilityElement = true;
         instructions.isAccessibilityElement = true;
+        skipBtn.isAccessibilityElement = true;
+        skipBtn.accessibilityLabel = "Skip"
+        backBtn.isAccessibilityElement = true;
+        backBtn.accessibilityLabel = "Back"
+        
+        // Calling the function resetTutorial to hide the IBOutlet's.
+        resetTutorial();
     }
     
     // Primary function of the tutorial. Called to reveal visibility of IBOutlet's and eventually is used to perform a segue.
@@ -252,6 +248,32 @@ class LevelOneViewController: UIViewController {
                 stagesCompleted = stage.three;
                 nextBtn.isEnabled = true;
             }
+        }
+    }
+    
+    // Called when the 'skip' button has been tapped. Skips the tutorial and brings the user to the level.
+    @IBAction func skipBtnTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toLevelOne", sender: self);
+    }
+    
+    // Called when the 'back' button has been tapped. Goes back one stage in the tutorial.
+    @IBAction func backBtnTapped(_ sender: Any) {
+        // Implement later when you have the time.
+        switch (stagesCompleted) {
+        case .omega:
+            break;
+        case .zero:
+            break;
+        case .one:
+            break;
+        case .two:
+            break;
+        case .three:
+            break;
+        case .four:
+            break;
+        case .five:
+            break;
         }
     }
     
