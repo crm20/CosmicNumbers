@@ -276,7 +276,6 @@ class LevelOneViewController: UIViewController {
             break;
         }
     }
-    
     // Function that initalizes the numbers located below the number line.
     func initializeNumberTexts() {
         
