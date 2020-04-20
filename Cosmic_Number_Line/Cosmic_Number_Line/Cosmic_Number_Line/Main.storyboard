@@ -2541,8 +2541,9 @@
                                     <constraint firstAttribute="width" constant="866" id="bCo-Ns-BoV"/>
                                 </constraints>
                             </view>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-7x-dwY">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="wG7-7x-dwY">
                                 <rect key="frame" x="30" y="30" width="77" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Astronaut Tommy">
                                     <accessibilityTraits key="traits" none="YES"/>
                                     <bool key="isElement" value="YES"/>
@@ -2581,11 +2582,9 @@
                             <constraint firstItem="Fbt-Vk-NLA" firstAttribute="top" secondItem="QBj-Ml-H5A" secondAttribute="top" id="D54-QD-RNp"/>
                             <constraint firstAttribute="trailing" secondItem="PdD-U2-aRK" secondAttribute="trailing" id="DwR-h8-6oA"/>
                             <constraint firstItem="Bln-ct-fUQ" firstAttribute="top" secondItem="PdD-U2-aRK" secondAttribute="bottom" constant="30" id="EvV-sG-MTA"/>
-                            <constraint firstItem="wG7-7x-dwY" firstAttribute="top" secondItem="zAh-Ve-Wkr" secondAttribute="top" constant="30" id="QAQ-sL-I5e"/>
                             <constraint firstItem="NBN-pv-aFY" firstAttribute="leading" secondItem="QBj-Ml-H5A" secondAttribute="leading" constant="10" id="UTh-eO-WIk"/>
                             <constraint firstAttribute="bottom" secondItem="PdD-U2-aRK" secondAttribute="bottom" constant="673" id="W2X-c2-kaa"/>
                             <constraint firstItem="NBN-pv-aFY" firstAttribute="top" secondItem="Bln-ct-fUQ" secondAttribute="bottom" constant="40" id="ZNV-9l-VB7"/>
-                            <constraint firstItem="wG7-7x-dwY" firstAttribute="leading" secondItem="zAh-Ve-Wkr" secondAttribute="leading" constant="30" id="ZRv-J7-l4P"/>
                             <constraint firstItem="UeS-tW-FlB" firstAttribute="centerX" secondItem="QBj-Ml-H5A" secondAttribute="centerX" id="cOh-BC-LpN"/>
                             <constraint firstItem="DEJ-Nz-b4h" firstAttribute="centerY" secondItem="QBj-Ml-H5A" secondAttribute="centerY" constant="85" id="ch3-qS-ogs"/>
                             <constraint firstItem="PdD-U2-aRK" firstAttribute="leading" secondItem="QBj-Ml-H5A" secondAttribute="leading" id="dIh-JR-x8N"/>
@@ -2934,6 +2933,7 @@
         <segue reference="PKX-hQ-KBc"/>
         <segue reference="IJa-2Y-tuQ"/>
         <segue reference="OqN-3T-S4o"/>
+
         <segue reference="jlZ-mU-k5X"/>
         <segue reference="ASQ-DW-YBi"/>
         <segue reference="0BI-nU-XXW"/>
@@ -2941,5 +2941,6 @@
         <segue reference="NAN-ke-7im"/>
         <segue reference="Emz-po-rLS"/>
         <segue reference="bRx-7X-9Oe"/>
+
     </inferredMetricsTieBreakers>
 </document>
