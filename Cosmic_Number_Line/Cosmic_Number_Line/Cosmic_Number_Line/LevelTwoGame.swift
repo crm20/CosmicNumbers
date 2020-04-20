@@ -34,6 +34,7 @@ class LevelTwoGame: UIViewController {
     var astronautOriginalPosition = CGPoint(x:0,y:0)
     var newSound: AVAudioPlayer?
 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,7 @@ class LevelTwoGame: UIViewController {
             tryAgainVC?.previousTwo=true
         }
         else {
+
             let path = Bundle.main.path(forResource: "correct.mp3", ofType:nil)!
             let url = URL(fileURLWithPath: path)
 
@@ -91,6 +93,7 @@ class LevelTwoGame: UIViewController {
             } catch {
                 // couldn't load file :(
             }
+
             // If the player answered the question correctly, he/she will play the next round
             var rightVC = segue.destination as? CorrectPopUpViewController
             if (rightVC != nil) {

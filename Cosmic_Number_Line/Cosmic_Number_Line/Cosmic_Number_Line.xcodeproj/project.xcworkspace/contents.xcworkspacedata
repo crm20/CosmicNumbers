@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/hyunc/Desktop/Cosmic_Number_Line/Cosmic_Number_Line/Cosmic_Number_Line/LevelTwoGame.swift">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
