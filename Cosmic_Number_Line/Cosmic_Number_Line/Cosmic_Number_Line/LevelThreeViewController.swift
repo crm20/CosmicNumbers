@@ -90,7 +90,7 @@ class LevelThreeViewController: UIViewController {
                 lineRef.isHidden = false;
                 astronaut.isHidden = false;
 
-                changeInstructions(newText: "First tap on any number on the number line.");
+                changeInstructions(newText: "First find and tap Astronaut Tommy.");
                 break;
             
             case .one:
@@ -125,7 +125,7 @@ class LevelThreeViewController: UIViewController {
                 
                 case .zero:
                 // First subgoal.
-                    if (subGoalCompleted == .zero && hasTappedLineNumber(position: position)) {
+                    if (subGoalCompleted == .zero && hasTappedTommy(position: position)) {
                         changeInstructions(newText: "Now find Astronaut Tommy's Location and drag your finger below to find his number. Tap it to select.");
                         subGoalCompleted = .one;
                         
@@ -313,6 +313,13 @@ class LevelThreeViewController: UIViewController {
     func changeInstructions(newText: String) {
         instructions.text = newText;
         instructions.accessibilityLabel = newText;
+    }
+    
+    func hasTappedTommy(position: CGPoint) -> Bool {
+        // Math is similar to setting Astronaut Tommy on the number line.
+        let astronautLocation = astronaut.center;
+        return (position.x <= astronautLocation.x + astronaut.bounds.size.width / 2 && position.x >= astronautLocation.x - astronaut.bounds.size.width / 2 &&
+            position.y <= astronautLocation.y + astronaut.bounds.size.height / 2 && position.y >= astronautLocation.y - astronaut.bounds.size.height / 2);
     }
     
     func hasTappedLineNumber(position: CGPoint, specificNumber: Int? = -1) -> Bool {
