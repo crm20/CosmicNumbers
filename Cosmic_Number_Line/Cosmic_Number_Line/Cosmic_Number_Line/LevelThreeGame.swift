@@ -63,7 +63,6 @@ class LevelThreeGame: UIViewController {
                 button.accessibilityValue = "Selected"
                 if let text = button.titleLabel?.text {
                     selectedAnswer = text
-                    print(selectedAnswer)
                 }
             }
             else {
