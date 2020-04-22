@@ -5,7 +5,6 @@
 //  Created by hyunc on 3/21/20.
 //  Copyright © 2020 Cosmic_Numbers. All rights reserved.
 //
-
 import UIKit
 
 class LevelThreeViewController: UIViewController {
@@ -61,6 +60,7 @@ class LevelThreeViewController: UIViewController {
         astronaut.frame = CGRect(x: minXOfLine + ((linerefbounds.width-40) / 5 * CGFloat(astronautNumber)),  y: lineRef.center.y, width: astronaut.frame.size.width, height: astronaut.frame.size.height)
         // Setting accessibility status and labels.
         isAccessibilityElement = true;
+        instructions.numberOfLines = 0;
         instructions.isAccessibilityElement = true;
         skipBtn.isAccessibilityElement = true;
         skipBtn.accessibilityLabel = "Skip"
@@ -351,7 +351,6 @@ class LevelThreeViewController: UIViewController {
 
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

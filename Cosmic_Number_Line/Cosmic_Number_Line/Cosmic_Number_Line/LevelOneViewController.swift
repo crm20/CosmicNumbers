@@ -5,7 +5,6 @@
 //  Created by hyunc on 3/21/20.
 //  Copyright © 2020 Cosmic_Numbers. All rights reserved.
 //
-
 import UIKit
 
 class LevelOneViewController: UIViewController {
@@ -216,6 +215,7 @@ class LevelOneViewController: UIViewController {
         
         // Goes through the [answerArray] to find the button that was clicked.
         for answer in answerArray {
+            // If true, change the button's background color to dark purple, its text to white, and its accessibility value.
             if (answer == button) {
                 answerSelected = true
                 button.backgroundColor = UIColor(red:0.43, green:0.17, blue:0.56, alpha:1.0)
@@ -225,6 +225,7 @@ class LevelOneViewController: UIViewController {
                     selectedAnswer = Int(text) ?? 0
                 }
             }
+            // If false, change the button's background color to yellow and its text to black.
             else {
                 answerSelected = false
                 answer.backgroundColor = UIColor(red:0.90, green:0.73, blue:0.17, alpha:1.0)

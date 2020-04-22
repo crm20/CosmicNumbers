@@ -5,7 +5,6 @@
 //  Created by Joseph Kim on 3/31/20.
 //  Copyright © 2020 Cosmic_Numbers. All rights reserved.
 //hello
-
 import UIKit
 import AVFoundation
 
@@ -120,6 +119,7 @@ class LevelFiveGamePt2: UIViewController {
             )
             
             // Determining the initial location (x, y) of [astronaut]
+
             if (i == num1) {
                 // Setting [astronaut] to the correct location with correct dimensions.
                 // Math explanation:
@@ -357,4 +357,3 @@ class LevelFiveGamePt2: UIViewController {
         }
     }
 }
-
