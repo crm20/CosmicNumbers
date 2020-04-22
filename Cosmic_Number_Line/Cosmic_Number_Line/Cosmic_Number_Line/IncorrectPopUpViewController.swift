@@ -34,11 +34,35 @@ class IncorrectPopUpViewController: UIViewController {
     var previousFiveNum1:Int=0
     var previousFiveNum2:Int=0
     
+    var previousP2Five = false
+    var previousP2FiveVCNum:Int=0
+    var previousP2FiveSelectedNum:Int=0
+    var previousP2FiveNum1:Int=0
+    var previousP2FiveNum2:Int=0
+    
     var previousSix = false
     var previousSixVCNum:Int=0
     var previousSixSelectedNum:Int=0
     var previousSixNum1:Int=0
     var previousSixNum2:Int=0
+    
+    var previousSeven = false
+    var previousSevenVCNum:Int=0
+    var previousSevenSelectedNum:Int=0
+    var previousSevenNum1:Int=0
+    var previousSevenNum2:Int=0
+    
+    var previousP2Seven = false
+    var previousP2SevenVCNum:Int=0
+    var previousP2SevenSelectedNum:Int=0
+    var previousP2SevenNum1:Int=0
+    var previousP2SevenNum2:Int=0
+    
+    var previousEight = false
+    var previousEightVCNum:Int=0
+    var previousEightSelectedNum:Int=0
+    var previousEightNum1:Int=0
+    var previousEightNum2:Int=0
     
 
     @IBOutlet weak var tryagainhint: UILabel!
@@ -92,12 +116,37 @@ class IncorrectPopUpViewController: UIViewController {
             self.showAnimate()
         }
         
-        // If the user is playing level five
+        // If the user is playing level fivept2
+        // no hint will be provided
+            
+        else if (previousP2Five == true) {
+            tryagainhint.text = ""
+            self.showAnimate()
+        }
+        
+        // If the user is playing level six
         // no hint will be provided
         else if (previousSix == true) {
             tryagainhint.text = "You were on number \(previousSixSelectedNum)"
             self.showAnimate()
         }
+        else if (previousSeven == true) {
+            tryagainhint.text = ""
+            self.showAnimate()
+        }
+        
+        // If the user is playing level fivept2
+        // no hint will be provided
+            
+        else if (previousP2Seven == true) {
+            tryagainhint.text = ""
+            self.showAnimate()
+        }
+        else if (previousEight == true) {
+            tryagainhint.text = "You were on number \(previousEightSelectedNum)"
+            self.showAnimate()
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -133,11 +182,35 @@ class IncorrectPopUpViewController: UIViewController {
             levelVC.num1=previousFiveNum1
             levelVC.num2=previousFiveNum2
         }
+        else if (previousP2Five == true) {
+            let levelVC:LevelFiveGamePt2=segue.destination as! LevelFiveGamePt2
+            levelVC.desiredNumber=previousP2FiveVCNum
+            levelVC.num1=previousP2FiveNum1
+            levelVC.num2=previousP2FiveNum2
+        }
         else if (previousSix == true) {
             let levelVC:LevelSixGame=segue.destination as! LevelSixGame
             levelVC.desiredNumber=previousSixVCNum
             levelVC.num1=previousSixNum1
             levelVC.num2=previousSixNum2
+        }
+        else if (previousSeven == true) {
+            let levelVC:LevelSevenGame=segue.destination as! LevelSevenGame
+            levelVC.desiredNumber=previousSevenVCNum
+            levelVC.num1=previousSevenNum1
+            levelVC.num2=previousSevenNum2
+        }
+        else if (previousP2Seven == true) {
+            let levelVC:LevelSevenGamePt2=segue.destination as! LevelSevenGamePt2
+            levelVC.desiredNumber=previousP2SevenVCNum
+            levelVC.num1=previousP2SevenNum1
+            levelVC.num2=previousP2SevenNum2
+        }
+        else if (previousEight == true) {
+            let levelVC:LevelEightGame=segue.destination as! LevelEightGame
+            levelVC.desiredNumber=previousEightVCNum
+            levelVC.num1=previousEightNum1
+            levelVC.num2=previousEightNum2
         }
     }
 
@@ -161,8 +234,20 @@ class IncorrectPopUpViewController: UIViewController {
         if (previousFive == true) {
             performSegue(withIdentifier: "tryAgainToLevelFive", sender: self)
         }
+        if (previousP2Five == true) {
+            performSegue(withIdentifier: "tryAgainToLevelFiveP2", sender: self)
+        }
         if (previousSix == true) {
             performSegue(withIdentifier: "tryAgainToLevelSix", sender: self)
+        }
+        if (previousSeven == true) {
+            performSegue(withIdentifier: "tryAgainToLevelSeven", sender: self)
+        }
+        if (previousP2Seven == true) {
+            performSegue(withIdentifier: "tryAgainToLevelSevenP2", sender: self)
+        }
+        if (previousEight == true) {
+            performSegue(withIdentifier: "tryAgainToLevelEight", sender: self)
         }
     }
     

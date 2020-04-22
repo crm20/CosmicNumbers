@@ -1,5 +1,5 @@
 //
-//  LevelSixViewController.swift
+//  LevelEightViewController.swift
 //  Cosmic_Number_Line
 //
 //  Created by Joseph Kim on 4/20/20.
@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class LevelSixViewController: UIViewController {
+class LevelEightViewController: UIViewController {
     /// Basic IBOutlet variables.
     @IBOutlet weak var levels: UIButton!
     @IBOutlet weak var astronaut: UIImageView!
@@ -19,7 +19,7 @@ class LevelSixViewController: UIViewController {
     @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     
-    var desiredNumber = 4;
+    var desiredNumber = 2;
     var accessibleNumbers:[UIView] = []
     var threshold=10
     var exampleVar:Int=0
@@ -71,29 +71,29 @@ class LevelSixViewController: UIViewController {
             lineRef.isHidden = false;
             stagesCompleted = stage.one
             initializeNumberTexts()
-            changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 3 + 1" + " and click Next.");
+            changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 4 - 2" + " and click Next.");
             astronaut.center = astronautOriginalPosition
             break;
-           case .one:
-               let astronaut_positionX = astronaut.center.x
-                   let astronaut_positionY = astronaut.center.y
-                   let lineRefBounds:CGRect=lineRef.bounds
-                   let minXOfLine = lineRef.center.x-(lineRefBounds.width/2)
-                   let maxYOfLine = lineRef.center.y
-               
-                   if (astronaut_positionX >= lineRef.points[desiredNumber].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[desiredNumber].bounds.maxX+minXOfLine+40
-                       && astronaut_positionY >= maxYOfLine-70 &&
-                       astronaut_positionY < maxYOfLine+100) {
-                       astronaut.isHidden = true
-                       changeInstructions(newText: "Great job! To practice some more addition, click Next.");
-                       stagesCompleted = stage.two
-                   } else {
-                       changeInstructions(newText: "Try Again. Drag him to tick number 3 + 1" + " and click Next.");
-                       astronaut.center = astronautOriginalPosition
-               }
-           case .two:
-               performSegue(withIdentifier: "toLevelSix", sender: self);
+           
+        case .one:
+            let astronaut_positionX = astronaut.center.x
+                let astronaut_positionY = astronaut.center.y
+                let lineRefBounds:CGRect=lineRef.bounds
+                let minXOfLine = lineRef.center.x-(lineRefBounds.width/2)
+                let maxYOfLine = lineRef.center.y
             
+                if (astronaut_positionX >= lineRef.points[desiredNumber].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[desiredNumber].bounds.maxX+minXOfLine+40
+                    && astronaut_positionY >= maxYOfLine-70 &&
+                    astronaut_positionY < maxYOfLine+100) {
+                    astronaut.isHidden = true
+                    changeInstructions(newText: "Great job! To practice some more subtraction, click Next.");
+                    stagesCompleted = stage.two
+                } else {
+                    changeInstructions(newText: "Try Again. Drag him to tick number 4 - 2" + " and click Next.");
+                    astronaut.center = astronautOriginalPosition
+            }
+        case .two:
+            performSegue(withIdentifier: "toLevelEight", sender: self);
         }
 
     }
@@ -105,7 +105,7 @@ class LevelSixViewController: UIViewController {
         lineRef.isHidden = false;
         astronaut.center = astronautOriginalPosition
         astronaut.isHidden = true
-        changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, click Next.");
+        changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 - 1. When you know the answer, click Next.");
         
     }
     // writes number below number line
@@ -142,7 +142,7 @@ class LevelSixViewController: UIViewController {
 
     // skip button takes straight to level
     @IBAction func skipBtnTapped(_ sender: Any) {
-        performSegue(withIdentifier: "toLevelSix", sender: self);
+        performSegue(withIdentifier: "toLevelEight", sender: self);
     }
     
     // Called when the 'back' button has been tapped. Goes back one stage in the tutorial.
@@ -154,17 +154,17 @@ class LevelSixViewController: UIViewController {
             stagesCompleted = stage.omega
             break;
         case .one:
-                changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, click Next.");
+                changeInstructions(newText: "Let's see those sbutraction skills you learned in Level 7! Solve 4 - 2. When you know the answer, click Next.");
                 stagesCompleted = stage.zero
                 astronaut.center = astronautOriginalPosition
                 astronaut.isHidden = true
                 break;
-       case .two:
-           changeInstructions(newText: "Drag him to tick number 3 + 1" + " and click Next.")
-           stagesCompleted = stage.one
-           astronaut.center = astronautOriginalPosition
-           break;
-       }
+        case .two:
+            changeInstructions(newText: "Drag him to tick number 4 - 2" + " and click Next.")
+            stagesCompleted = stage.one
+            astronaut.center = astronautOriginalPosition
+            break;
+        }
     }
     
     // resets tutorial by tapping Tutorial Button
@@ -172,7 +172,7 @@ class LevelSixViewController: UIViewController {
         sender: Any) {
         resetTutorial();
     }
-    @IBAction func unwindToLevelSixTutorialSelector(_ sender: UIStoryboardSegue) {
+    @IBAction func unwindToLevelEightTutorialSelector(_ sender: UIStoryboardSegue) {
         resetTutorial();
     }
     // changes instructions in tutorial

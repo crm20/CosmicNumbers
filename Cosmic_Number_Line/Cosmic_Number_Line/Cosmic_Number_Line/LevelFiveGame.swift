@@ -5,7 +5,6 @@
 //  Created by Joseph Kim on 3/31/20.
 //  Copyright © 2020 Cosmic_Numbers. All rights reserved.
 //
-
 import UIKit
 import AVFoundation
 
@@ -27,7 +26,8 @@ class LevelFiveGame: UIViewController {
     var ranges=[(CGFloat(0.0),CGFloat(0.0))]
     var num1 = Int.random(in: 0...3)
     var num2 = Int.random(in: 0...2)
-    lazy var desiredNumber = num1+num2
+    //lazy var desiredNumber = num1+num2
+    lazy var desiredNumber = num1
     var threshold=10
     var exampleVar:Int=0
     var player: AVAudioPlayer?
@@ -38,13 +38,15 @@ class LevelFiveGame: UIViewController {
     var mostrecentTick:UIView?=nil
     var accessibleNumbers:[UIView]=[]
     var astronautOriginalPosition = CGPoint(x:0,y:0)
+    var newSound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true
-        astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) + \(num2)"
+        //astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) + \(num2)"
+        astronautPlaceLabel.text = "Solve \(num1) + \(num2)!\nFirst Drag Astronaut Tommy to tick \(num1)"
         astronautOriginalPosition = astronaut.center
     }
     
@@ -72,6 +74,15 @@ class LevelFiveGame: UIViewController {
         
         // If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
+            let path = Bundle.main.path(forResource: "wrong.wav", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             tryAgainVC?.previousFiveVCNum=desiredNumber
             tryAgainVC?.previousFiveSelectedNum=selectednumber
             tryAgainVC?.previousFiveNum1=num1
@@ -81,10 +92,21 @@ class LevelFiveGame: UIViewController {
         }
         else{
              //If the player answered the question correctly, he/she will play the next round
-            var rightVC = segue.destination as? CorrectPopUpViewController
+             let path = Bundle.main.path(forResource: "correct.mp3", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
+            var rightVC = segue.destination as? LevelFiveGamePt2
             if (rightVC != nil){
-                rightVC!.parentFiveVC=self
-                rightVC!.numLevelsComplete=self.howManyLevelsAreDone
+                //rightVC!.parentFiveVC=self
+                //rightVC!.numLevelsComplete=self.howManyLevelsAreDone
+                rightVC!.num1 = num1
+                rightVC!.num2 = num2
             }
             else{
                 print("other vc")
@@ -272,7 +294,7 @@ class LevelFiveGame: UIViewController {
         if (astronaut_positionX >= lineRef.points[desiredNumber].bounds.minX+minXOfLine-40 && astronaut_positionX < lineRef.points[desiredNumber].bounds.maxX+minXOfLine+40
             && astronaut_positionY >= maxYOfLine-70 &&
             astronaut_positionY < maxYOfLine+100) {
-            performSegue(withIdentifier: "toCongrats", sender: self)
+            performSegue(withIdentifier: "toPart2", sender: self)
             
         }
         

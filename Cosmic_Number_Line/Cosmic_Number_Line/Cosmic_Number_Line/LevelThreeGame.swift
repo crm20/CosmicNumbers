@@ -26,6 +26,7 @@ class LevelThreeGame: UIViewController {
     var previousVC:UIViewController?=nil
     var answerArray: [UIButton]=[]
     var answerSelected = false
+    var newSound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,11 +85,29 @@ class LevelThreeGame: UIViewController {
         
         //If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
+            let path = Bundle.main.path(forResource: "wrong.wav", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             tryAgainVC?.previousThreeDesiredNum=desiredNumber
             tryAgainVC?.previousThreeAstronautNum=astronautNumber
             tryAgainVC?.previousThree=true
         }
         else{
+            let path = Bundle.main.path(forResource: "correct.mp3", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             // If the player answered the question correctly, he/she will play the next round
             var rightVC = segue.destination as? CorrectPopUpViewController
             if (rightVC != nil){

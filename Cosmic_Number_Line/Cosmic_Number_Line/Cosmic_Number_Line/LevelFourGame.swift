@@ -29,6 +29,7 @@ class LevelFourGame: UIViewController {
     var previousVC:UIViewController?=nil
     var answerArray: [UIButton]=[]
     let pickerData = ["Greater than", "Equal to", "Less than"]
+    var newSound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,12 +78,30 @@ class LevelFourGame: UIViewController {
         
         //If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
+            let path = Bundle.main.path(forResource: "wrong.wav", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             tryAgainVC?.previousFourDesiredNum=desiredNumber
             tryAgainVC?.previousFourAstronautNum=astronautNumber
             tryAgainVC?.previousFour=true
         }
         else{
             // If the player answered the question correctly, he/she will play the next round
+            let path = Bundle.main.path(forResource: "correct.mp3", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             var rightVC = segue.destination as? CorrectPopUpViewController
             if (rightVC != nil){
                 rightVC!.parentFourVC=self
@@ -121,10 +140,9 @@ class LevelFourGame: UIViewController {
             label.isUserInteractionEnabled = true
             label.accessibilityLabel = String(i)
             accessibleNumbers.append(label)
-            i = i+1
             
             // Determining the initial location (x, y) of [astronaut]
-            if (i == desiredNumber) {
+            if (i == astronautNumber) {
                 // Setting [astronaut] to the correct location with correct dimensions.
                 // Math explanation:
                 // x:
@@ -141,6 +159,7 @@ class LevelFourGame: UIViewController {
                     y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
                 )
             }
+            i += 1;
         }
         self.view.accessibilityElements = [question, lineRef, astronaut, accessibleNumbers, astronautTwo, pickerItem, questionNum, submitBtn, tutorial, levels];
     }

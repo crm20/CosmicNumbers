@@ -2,10 +2,9 @@
 //  LevelSixGame.swift
 //  Cosmic_Number_Line
 //
-//  Created by Joseph Kim on 3/31/20.
+//  Created by hyunc on 4/2/20.
 //  Copyright © 2020 Cosmic_Numbers. All rights reserved.
 //
-
 import UIKit
 import AVFoundation
 
@@ -20,14 +19,15 @@ class LevelSixGame: UIViewController {
     @IBOutlet weak var lineRef: Line!
     @IBOutlet weak var submitBtn: UIButton!
     
+    
     var previousVC:UIViewController?=nil
     var previousVCSuccess:UIViewController?=nil
     var popOverVC:CorrectPopUpViewController?=nil
     var i = 0
     var ranges=[(CGFloat(0.0),CGFloat(0.0))]
-    var num1 = Int.random(in: 0...5)
-    lazy var num2 = Int.random(in: 0...num1)
-    lazy var desiredNumber = num1-num2
+    var num1 = Int.random(in: 0...3)
+    var num2 = Int.random(in: 0...2)
+    lazy var desiredNumber = num1+num2
     var threshold=10
     var exampleVar:Int=0
     var player: AVAudioPlayer?
@@ -38,13 +38,15 @@ class LevelSixGame: UIViewController {
     var mostrecentTick:UIView?=nil
     var accessibleNumbers:[UIView]=[]
     var astronautOriginalPosition = CGPoint(x:0,y:0)
+    var newSound: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true
-        astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) - \(num2)"
+        //astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) + \(num2)"
+        astronautPlaceLabel.text = "Solve \(num1) + \(num2)!"
         astronautOriginalPosition = astronaut.center
     }
     
@@ -72,16 +74,33 @@ class LevelSixGame: UIViewController {
         
         // If the player answered the question incorrectly, he/she needs to try the same round again
         if(tryAgainVC != nil){
+            let path = Bundle.main.path(forResource: "wrong.wav", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             tryAgainVC?.previousSixVCNum=desiredNumber
             tryAgainVC?.previousSixSelectedNum=selectednumber
             tryAgainVC?.previousSixNum1=num1
             tryAgainVC?.previousSixNum2=num2
             tryAgainVC?.previousSix=true
-            print(desiredNumber)
-            print(selectednumber)
+            
         }
         else{
              //If the player answered the question correctly, he/she will play the next round
+            let path = Bundle.main.path(forResource: "correct.mp3", ofType:nil)!
+            let url = URL(fileURLWithPath: path)
+
+            do {
+                newSound = try AVAudioPlayer(contentsOf: url)
+                newSound?.play()
+            } catch {
+                // couldn't load file :(
+            }
             var rightVC = segue.destination as? CorrectPopUpViewController
             if (rightVC != nil){
                 rightVC!.parentSixVC=self
@@ -191,56 +210,55 @@ class LevelSixGame: UIViewController {
                 print("more than 2 intersecting items")
             }
             
-            if (translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut) {
-                playSound()
-                holdingAstronaut = false
-                         
-                if (intersectingTicks != []) {
-                    // [currentTick] refers to the tick [astronaut] is currently placed on top of.
-                    let currentTick: UIView = intersectingTicks[intersectingTicks.count - 1];
-                    
-                    // [minXOfLine] is the coordinate x value of '0' on the number line.
-                    let minXOfLine = lineRef.center.x - (lineRef.bounds.width/2)
-                                                
-                    // 'Locking' Tommy on the [currentTick]
-                    // Math explanation:
-                    // x:
-                    //    - Start from x value of '0' on the number line [minXOfLine].
-                    //    - Add the distance from '0' on the number line to the x value of the current tick [currentTick.frame.minX].
-                    //    - Since the width of the line is 30.0, 15.0 should be added to place Tommy on the middle of the tick.
-                    // y:
-                    //    - Start from the y value of the line on the screen [lineRef.center.y] + [lineRef.bounds.height] / 2
-                    //    - Subtract 10.0 since that's the space between the text and tick.
-                    //    - Subtract 20.0 since that's the width of the number line.
-                    //    - Subtract half the height of Tommy to place him on the number line.
-                    astronaut.center = CGPoint(
-                        x: minXOfLine + currentTick.frame.minX + 15.0,
-                        y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
-                    );
-                                     
-                    // Returns Tommy back to the original position.
-                    } else if (holdingAstronaut == false) {
-                        astronaut.center = astronautOriginalPosition
+            if (translation.x >= -0.1 && translation.x <= 0.1 && translation.y >= -0.1 && translation.y <= 0.1 && holdingAstronaut){
+                        playSound()
+                        holdingAstronaut = false
+                        
+                        // If statement that checks if the player has placed Tommy on a tick.
+                        if (intersectingTicks != []) {
+                            // [currentTick] refers to the tick [astronaut] is currently placed on top of.
+                            let currentTick: UIView = intersectingTicks[intersectingTicks.count - 1];
+                            
+                            // [minXOfLine] is the coordinate x value of '0' on the number line.
+                            let minXOfLine = lineRef.center.x - (lineRef.bounds.width/2)
+                            
+                            // 'Locking' Tommy on the [currentTick]
+                            // Math explanation:
+                            // x:
+                            //    - Start from x value of '0' on the number line [minXOfLine].
+                            //    - Add the distance from '0' on the number line to the x value of the current tick [currentTick.frame.minX].
+                            //    - Since the width of the line is 30.0, 15.0 should be added to place Tommy on the middle of the tick.
+                            // y:
+                            //    - Start from the y value of the line on the screen [lineRef.center.y] + [lineRef.bounds.height] / 2
+                            //    - Subtract 10.0 since that's the space between the text and tick.
+                            //    - Subtract 20.0 since that's the width of the number line.
+                            //    - Subtract half the height of Tommy to place him on the number line.
+                            astronaut.center = CGPoint(
+                                x: minXOfLine + currentTick.frame.minX + 15.0,
+                                y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
+                            );
+                            
+                        // Returns Tommy back to the original position.
+                        } else if (holdingAstronaut == false){
+                            astronaut.center = astronautOriginalPosition
+                        }
+                        waitingTime = maxWaitingTime
                     }
-                waitingTime = maxWaitingTime
-            }
-            else {
-                if (waitingTime<0){
-                    holdingAstronaut=true
-                  //  print("holding")
+                    else {
+                        if (waitingTime < 0){
+                            holdingAstronaut = true
+                        }
+                        else {
+                            waitingTime -= 1
+                            holdingAstronaut = false
+                        }
+                    }
+                    view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
+                    
                 }
-                else {
-                    waitingTime-=1
-                    holdingAstronaut=false
-                   // print("decrement")
-                }
+                self.view.bringSubviewToFront(view)
+                recognizer.setTranslation(CGPoint.zero, in: self.view)
             }
-            view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
-            
-        }
-        self.view.bringSubviewToFront(view)
-        recognizer.setTranslation(CGPoint.zero, in: self.view)
-    }
     
     // Play drop sound when the player drops the astronaut
     func playSound() {
