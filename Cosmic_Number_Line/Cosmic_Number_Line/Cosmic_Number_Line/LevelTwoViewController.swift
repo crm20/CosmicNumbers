@@ -19,7 +19,6 @@ class LevelTwoViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
-    @IBOutlet weak var levelBtn: UIButton!
     
     // Variables that are used to detect the location of taps.
     var lineNumberLocations: [CGPoint] = [];
