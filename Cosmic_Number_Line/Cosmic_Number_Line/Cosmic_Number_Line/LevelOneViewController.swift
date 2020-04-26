@@ -52,8 +52,11 @@ class LevelOneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        // Saving the answer buttons into an array
+        // Initializations.
         answerArray = [zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn];
+        instructions.adjustsFontSizeToFitWidth = true;
+        instructions.numberOfLines = 0;
+        instructions.sizeToFit();
         
         // Setting accessibility status and labels.
         isAccessibilityElement = true;
@@ -196,7 +199,7 @@ class LevelOneViewController: UIViewController {
                     threeBtn.isHidden = false;
                     fourBtn.isHidden = false;
                     fiveBtn.isHidden = false;
-                    changeInstructions(newText: "Number buttons are in a horizontal row along the bottom of the screen. Drag your finger to the bottom left corner to find the first number, 0. Drag right until you find the same number that Astronaut Tommy is on and split tap it!");
+                    changeInstructions(newText: "Number buttons are in a horizontal row along the bottom left of the screen. Drag from zero until you find the same number that Astronaut Tommy is on and then split tap it!");
                 }
                 break;
                 
@@ -355,11 +358,12 @@ class LevelOneViewController: UIViewController {
         answerArray[selectedAnswer].accessibilityValue = ""
         selectedAnswer = 0;
         
-        // Resetting [nextBtn]'s title text.
+        // Resetting [nextBtn]'s attributes.
         nextBtn.setTitle("Next", for: .normal);
+        nextBtn.isEnabled = true;
         
         // Resetting the instruction text.
-        changeInstructions(newText: "Starting in the bottom right corner of the iPad, drag your finger around to locate the Submit button. Keep your finger on the screen and split tap to select the Submit button.");
+        changeInstructions(newText: "Starting in the bottom right corner of the iPad, drag your finger around to locate the next button. Keep your finger on the screen and split tap to select it.");
     }
     
     // Shows the numbers below [lineRef] based on the given [isVisible] parameter. True makes the numbers visible while false makes them invisible.

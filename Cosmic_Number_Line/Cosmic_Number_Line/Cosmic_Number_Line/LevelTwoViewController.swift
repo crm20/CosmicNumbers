@@ -18,7 +18,6 @@ class LevelTwoViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
-    @IBOutlet weak var levelBtn: UIButton!
     
     // Variables that are used to detect the location of taps.
     var lineNumberLocations: [CGPoint] = [];
@@ -53,9 +52,12 @@ class LevelTwoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initializing variables.
+        // Initializations.
         astronautOriginalPosition = astronaut.center;
         tickLocations = lineRef.getTickCoords();
+        instructions.adjustsFontSizeToFitWidth = true;
+        instructions.numberOfLines = 0;
+        instructions.sizeToFit();
         
         // Setting accessibility status and labels.
         isAccessibilityElement = true;
@@ -149,14 +151,6 @@ class LevelTwoViewController: UIViewController {
             )
             lineNumberLocations.append(label.center);
             
-            // Determining the initial location (x, y) of [astronaut]
-            if (i == desiredNumber) {
-                astronaut.center = CGPoint(
-                    x: minXOfLine + xDist + lineRef.offSetFromEdges + 15.0,
-                    y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
-                )
-            }
-            
             // Initializing the number label's color, text, and accessibility traits.
             label.text = String(i)
             label.font = UIFont(name: "Arial-BoldMT", size: 40)
@@ -171,7 +165,7 @@ class LevelTwoViewController: UIViewController {
             accessibleNumbers.append(label)
         }
         // Adding all of the accessibility elements into the view's [accessibilityElements] array.
-        self.view.accessibilityElements = [lineRef, astronaut, accessibleNumbers, nextBtn, tutorialBtn, levelBtn];
+        self.view.accessibilityElements = [lineRef, astronaut, accessibleNumbers, nextBtn, tutorialBtn];
     }
     
     // Function that identifies where the player has dragged the astronaut.
