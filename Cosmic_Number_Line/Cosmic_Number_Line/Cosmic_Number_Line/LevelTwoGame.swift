@@ -40,6 +40,7 @@ class LevelTwoGame: UIViewController {
         
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true
+        astronautPlaceLabel.numberOfLines = 0;
         astronautPlaceLabel.text="Drag Astronaut Tommy to tick \(desiredNumber)" + " and click submit"
         astronautOriginalPosition = astronaut.center
     }
