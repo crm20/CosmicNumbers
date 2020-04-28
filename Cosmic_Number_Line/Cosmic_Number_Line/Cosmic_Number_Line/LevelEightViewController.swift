@@ -110,8 +110,10 @@ class LevelEightViewController: UIViewController {
         astronaut.center = astronautOriginalPosition
         astronaut.isHidden = true
         changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 - 2. When you know the answer, click Next.");
-        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
-        
+        UIAccessibility.post(notification: .screenChanged, argument: title8tutorial);
+        let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
+            UIAccessibility.post(notification: .screenChanged, argument: self.instructions)
+        });
     }
     // writes number below number line
     func initializeNumberTexts() {

@@ -111,8 +111,10 @@ class LevelSixViewController: UIViewController {
         astronaut.center = astronautOriginalPosition
         astronaut.isHidden = true
         changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, click Next.");
-        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
-        
+        UIAccessibility.post(notification: .screenChanged, argument: title6tutorial);
+        let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
+            UIAccessibility.post(notification: .screenChanged, argument: self.instructions)
+        });
     }
     // writes number below number line
     func initializeNumberTexts() {
