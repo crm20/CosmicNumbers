@@ -10,6 +10,7 @@ import AVFoundation
 class LevelTwoGame: UIViewController {
     
     // Reference to the visual objects
+    
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var tutorial: UIButton!
     @IBOutlet weak var levels: UIButton!

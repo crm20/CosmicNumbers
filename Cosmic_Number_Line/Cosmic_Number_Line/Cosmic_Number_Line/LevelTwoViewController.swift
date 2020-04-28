@@ -11,6 +11,9 @@ import AVFoundation
 class LevelTwoViewController: UIViewController {
 
     // Basic IBOutlet Variables.
+    
+    @IBOutlet weak var title2tutorial: UILabel!
+    @IBOutlet weak var levels: UIButton!
     @IBOutlet weak var lineRef: Line!
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var instructions: UILabel!
@@ -76,6 +79,7 @@ class LevelTwoViewController: UIViewController {
         case .zero:
             astronaut.isHidden = false;
             changeInstructions(newText: "Tommy is currently located at the top left section of the screen, waiting for you to help him. Tap when you find him!")
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             nextBtn.isEnabled = false;
             break;
         case .one:
@@ -91,6 +95,7 @@ class LevelTwoViewController: UIViewController {
             case .zero:
                 if (hasTappedTommy(position: position)) {
                     changeInstructions(newText: "Good job! You've found Tommy! Tommy now needs to move to the beginning of the number line. Place your finger on him and drag him down until you hear the first tick noise.")
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     tickLocations = lineRef.getTickCoords();
                 }
                 break;
@@ -104,6 +109,7 @@ class LevelTwoViewController: UIViewController {
                     astronaut.center.x <= specificTick.minX + minXOfLine + lineRef.lineWidth && astronaut.center.x >= specificTick.minX + minXOfLine &&
                     astronaut.center.y <= maxYOfLine && astronaut.center.y >= maxYOfLine - lineRef.lineHeight) {
                     changeInstructions(newText: "Tommy is back to where he belongs, but he still needs your help! Tap the 'next' button to help him again!")
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     nextBtn.isEnabled = true;
                     stagesCompleted = .one;
                 }
@@ -165,7 +171,7 @@ class LevelTwoViewController: UIViewController {
             accessibleNumbers.append(label)
         }
         // Adding all of the accessibility elements into the view's [accessibilityElements] array.
-        self.view.accessibilityElements = [lineRef, astronaut, accessibleNumbers, nextBtn, tutorialBtn];
+        self.view.accessibilityElements = [instructions, skipBtn, lineRef, astronaut, accessibleNumbers, nextBtn, tutorialBtn, backBtn, levels];
     }
     
     // Function that identifies where the player has dragged the astronaut.
@@ -250,6 +256,7 @@ class LevelTwoViewController: UIViewController {
                     if (astronaut.center.x <= specificTick.minX + minXOfLine + lineRef.lineWidth && astronaut.center.x >= specificTick.minX + minXOfLine &&
                         astronaut.center.y <= maxYOfLine && astronaut.center.y >= maxYOfLine - lineRef.lineHeight) {
                         changeInstructions(newText: "Great! Tommy has returned to the top left of the screen and now wants to reach the end of the number line. While still holding Tommy, drag him to location five. Tap the number below to check he's at the right spot!")
+                        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                         initializeNumberTexts();
                         subGoalCompleted = .one
                     }
@@ -325,6 +332,10 @@ class LevelTwoViewController: UIViewController {
     func resetTutorial() {
         astronaut.isHidden = true;
         instructions.text = "Tommy is lost and needs your help! We're going to place Tommy back to where he belongs. Tap the next button when you're ready!";
+        UIAccessibility.post(notification: .screenChanged, argument: title2tutorial);
+        let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
+            UIAccessibility.post(notification: .layoutChanged, argument: self.instructions)
+        })
         stagesCompleted = .zero;
         subGoalCompleted = .zero;
     }

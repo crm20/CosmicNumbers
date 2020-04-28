@@ -10,6 +10,8 @@ import AVFoundation
 
 class LevelSixViewController: UIViewController {
     /// Basic IBOutlet variables.
+    
+    @IBOutlet weak var title6tutorial: UILabel!
     @IBOutlet weak var levels: UIButton!
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var tutorialBtn: UIButton!
@@ -72,6 +74,7 @@ class LevelSixViewController: UIViewController {
             stagesCompleted = stage.one
             initializeNumberTexts()
             changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 3 + 1" + " and click Next.");
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             astronaut.center = astronautOriginalPosition
             break;
            case .one:
@@ -86,9 +89,11 @@ class LevelSixViewController: UIViewController {
                        astronaut_positionY < maxYOfLine+100) {
                        astronaut.isHidden = true
                        changeInstructions(newText: "Great job! To practice some more addition, click Next.");
+                       UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                        stagesCompleted = stage.two
                    } else {
                        changeInstructions(newText: "Try Again. Drag him to tick number 3 + 1" + " and click Next.");
+                       UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                        astronaut.center = astronautOriginalPosition
                }
            case .two:
@@ -106,6 +111,7 @@ class LevelSixViewController: UIViewController {
         astronaut.center = astronautOriginalPosition
         astronaut.isHidden = true
         changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, click Next.");
+        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
         
     }
     // writes number below number line
@@ -155,12 +161,14 @@ class LevelSixViewController: UIViewController {
             break;
         case .one:
                 changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, click Next.");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.zero
                 astronaut.center = astronautOriginalPosition
                 astronaut.isHidden = true
                 break;
        case .two:
            changeInstructions(newText: "Drag him to tick number 3 + 1" + " and click Next.")
+           UIAccessibility.post(notification: .layoutChanged, argument: instructions);
            stagesCompleted = stage.one
            astronaut.center = astronautOriginalPosition
            break;

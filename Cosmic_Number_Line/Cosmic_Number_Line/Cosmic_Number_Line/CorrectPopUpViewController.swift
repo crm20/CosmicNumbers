@@ -19,6 +19,10 @@ class CorrectPopUpViewController: UIViewController {
     var parentSevenPt2VC:LevelSevenGamePt2?=nil
     var parentEightVC:LevelEightGame?=nil
     var numLevelsComplete:Int=0
+    @IBOutlet weak var congrats: UILabel!
+    @IBOutlet weak var closeBtn: UIButton!
+    @IBOutlet weak var nextBtn: UIButton!
+    
     
     // Directs the player to level selection page
 //    @IBAction func closeButtonTouched(_ sender: Any) {
@@ -147,6 +151,8 @@ class CorrectPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showAnimate()
+        self.view.accessibilityElements = [congrats, closeBtn, nextBtn];
+        UIAccessibility.post(notification: .layoutChanged, argument: congrats);
     }
     
     override func didReceiveMemoryWarning() {

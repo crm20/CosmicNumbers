@@ -9,8 +9,7 @@ import UIKit
 
 class LevelThreeViewController: UIViewController {
     
-
-    @IBOutlet weak var Tutorial3: UILabel!
+    @IBOutlet weak var title3tutorial: UILabel!
     @IBOutlet weak var levels: UIButton!
     @IBOutlet weak var tutorial: UIButton!
     @IBOutlet weak var astronaut: UIImageView!
@@ -91,23 +90,26 @@ class LevelThreeViewController: UIViewController {
                 astronaut.isHidden = false;
 
                 changeInstructions(newText: "First find and tap Astronaut Tommy.");
-                break;
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
+                
             
             case .one:
                 nextBtn.isEnabled = false;
                 if ("Bigger" != selectedAnswer) {
                     changeInstructions(newText: "Tap the number of Astronaut Tommy's location on the number line. Compare the number below.");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 }
-                break;
+                
             
             case .two:
                 tutorial.isHidden = false;
                 levels.isHidden = false;
                 nextBtn.setTitle("Finish", for: .normal);
                 changeInstructions(newText: "Congratulations!\n To continue, split tap the next button.\n If you want to go to to other levels or redo the tutorial,\n two buttons have been added on the top, lefthand side of the screen.");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.three;
                 nextBtn.isEnabled = true;
-                break;
+                
             
             case .three:
                 performSegue(withIdentifier: "toLevelThree", sender: self);
@@ -127,11 +129,13 @@ class LevelThreeViewController: UIViewController {
                 // First subgoal.
                     if (subGoalCompleted == .zero && hasTappedTommy(position: position)) {
                         changeInstructions(newText: "Now find Astronaut Tommy's Location and drag your finger below to find his number. Tap it to select.");
+                        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                         subGoalCompleted = .one;
                         
                     } else if (subGoalCompleted == .one && hasTappedLineNumber(position: position, specificNumber: 3)) {
                         
                         changeInstructions(newText: "Great! Now we know that Astronaut Tommy is located on the number 3. Tap 'Next' to continue.");
+                        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                         subGoalCompleted = subGoal.zero;
                         stagesCompleted = stage.one;
                         nextBtn.isEnabled = true;
@@ -143,8 +147,9 @@ class LevelThreeViewController: UIViewController {
                         smaller.isHidden=false;
                         bigger.isHidden=false;
                         changeInstructions(newText: "Is Astronaut Tommy's location smaller or bigger than 2? Select from the two answer choices below the number line.");
+                        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     }
-                    break;
+                    
                 
                 
                 
@@ -181,10 +186,12 @@ class LevelThreeViewController: UIViewController {
             if (selectedAnswer == "Bigger") {
                 // Second Goal
                 changeInstructions(newText: "Good job!\n Split tap the next button for the final stage of the tutorial.");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.two;
                 nextBtn.isEnabled = true;
             } else {
                 changeInstructions(newText: "Not quite. Try again!");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.one;
                 nextBtn.isEnabled = true;
             }
@@ -260,7 +267,7 @@ class LevelThreeViewController: UIViewController {
             
             i += 1;
         }
-        self.view.accessibilityElements = [lineRef, astronaut, accessibleNumbers, smaller, bigger, nextBtn, tutorial, levels];
+        self.view.accessibilityElements = [lineRef, astronaut, accessibleNumbers, smaller, bigger, nextBtn, tutorial, levels, backBtn, skipBtn];
     }
         
     func resetTutorial() {
@@ -293,6 +300,10 @@ class LevelThreeViewController: UIViewController {
         
         // Resetting the instruction text.
         changeInstructions(newText: "Now we will compare Astronaut Tommy’s Location with an another number! Find and tap the next button on the bottom right to continue.");
+        UIAccessibility.post(notification: .screenChanged, argument: title3tutorial);
+        let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
+            UIAccessibility.post(notification: .screenChanged, argument: self.instructions)
+        })
     }
     
     func changeLineNumberVisibility(isVisible: Bool) {

@@ -10,6 +10,8 @@ import UIKit
 class LevelOneViewController: UIViewController {
     
     /// Basic IBOutlet variables.
+
+    @IBOutlet weak var title1tutorial: UILabel!
     @IBOutlet weak var levels: UIButton!
     @IBOutlet weak var tutorial: UIButton!
     @IBOutlet weak var astronaut: UIImageView!
@@ -89,6 +91,7 @@ class LevelOneViewController: UIViewController {
             nextBtn.isEnabled = false;
             lineRef.isHidden = false;
             changeInstructions(newText: "Starting at the top left corner of the screen, drag your finger in a straight line down along the left side of the screen. Tap when you hear the “tick” sound!");
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions)
             break;
             
         // Stage 1: Renders the numbers for the [line].
@@ -101,6 +104,7 @@ class LevelOneViewController: UIViewController {
             }
             nextBtn.isEnabled = false;
             changeInstructions(newText: "Directly below each tick is a number. This number tells you where you are on the number line. Drag your finger in a straight line down from any tick and tap the number!");
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             break;
             
         // Case 2: Renders [astronaut].
@@ -109,6 +113,7 @@ class LevelOneViewController: UIViewController {
             astronaut.isHidden = false;
             nextBtn.isEnabled = false;
             changeInstructions(newText: "Astronaut Tommy is on a tick mark. Find the first tick mark then drag your finger to the right to find Astronaut Tommy. Tap on him when you find him!");
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             break;
             
         // Case 3: Renders the buttons.
@@ -116,6 +121,7 @@ class LevelOneViewController: UIViewController {
             nextBtn.isEnabled = false;
             if (desiredNumber != selectedAnswer) {
                 changeInstructions(newText: "Find Astronaut Tommy, then find the number below him. Tap that number!");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             }
             break;
             
@@ -126,7 +132,7 @@ class LevelOneViewController: UIViewController {
             nextBtn.setTitle("Finish", for: .normal);
             nextBtn.isEnabled = false;
             changeInstructions(newText: "Congratulations! To continue, split tap the next button. If you want to go to to other levels or redo the tutorial, two buttons have been added on the top, lefthand side of the screen.");
-            
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             stagesCompleted = stage.five;
             nextBtn.isEnabled = true;
             break;
@@ -150,10 +156,12 @@ class LevelOneViewController: UIViewController {
                 // First subgoal.
                 if (subGoalCompleted == .zero && hasTappedTick(position: position)) {
                     changeInstructions(newText: "You found the number line! Now drag your finger in a straight line to the right, following the tick marks on the number line. Tap when you hear the last tick!");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     subGoalCompleted = subGoal.one;
                 // Second subgoal.
                 } else if (subGoalCompleted == .one && hasTappedTick(position: position, specificTick: 5)) {
                     changeInstructions(newText: "Now split tap the next button in the bottom right corner.");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     subGoalCompleted = subGoal.zero;
                     stagesCompleted = stage.one;
                     nextBtn.isEnabled = true;
@@ -163,11 +171,13 @@ class LevelOneViewController: UIViewController {
             case .one:
                 // First subgoal.
                 if (subGoalCompleted == .zero && hasTappedLineNumber(position: position)) {
-                    changeInstructions(newText: "Now drag your finger to the right, listening to all the numbers. This number line ranges from 0 – 5. Tap when you hear number five!");
+                    changeInstructions(newText: "Now drag your finger to the right, listening to all the numbers. This number line ranges from 0 to 5. Tap when you hear number five!");
                     subGoalCompleted = .one;
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 // Second subgoal.
                 } else if (subGoalCompleted == .one && hasTappedLineNumber(position: position, specificNumber: 5)) {
                     changeInstructions(newText: "Good job! Now split tap the next button!");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     stagesCompleted = stage.two;
                     nextBtn.isEnabled = true;
                     subGoalCompleted = subGoal.zero;
@@ -178,12 +188,14 @@ class LevelOneViewController: UIViewController {
                 // First subgoal.
                 if (subGoalCompleted == .zero && hasTappedTommy(position: position)) {
                     changeInstructions(newText: "Now, drag your finger down directly below him to find his number. Tap when you hear his number!");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     subGoalCompleted = subGoal.one;
                     
                 // Second subgoal.
                 } else if (subGoalCompleted == .one && hasTappedLineNumber(position: position, specificNumber: 3)) {
                     // Second subgoal
                     changeInstructions(newText: "Great! Now that you know how to find Astronaut Tommy and his location, split tap the next button for the final stage of the tutorial.");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     stagesCompleted = stage.three;
                     nextBtn.isEnabled = true;
                     subGoalCompleted = subGoal.zero;
@@ -200,6 +212,7 @@ class LevelOneViewController: UIViewController {
                     fourBtn.isHidden = false;
                     fiveBtn.isHidden = false;
                     changeInstructions(newText: "Number buttons are in a horizontal row along the bottom left of the screen. Drag from zero until you find the same number that Astronaut Tommy is on and then split tap it!");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 }
                 break;
                 
@@ -242,11 +255,13 @@ class LevelOneViewController: UIViewController {
             if (selectedAnswer == desiredNumber) {
                 // Second Goal
                 changeInstructions(newText: "Good job! Split tap the next button for the final stage of the tutorial.");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.four;
                 nextBtn.isEnabled = true;
             } else {
                 let additionalInformation = selectedAnswer < desiredNumber ? "less than" : "greater than";
                 changeInstructions(newText: "Not quite. Your answer is " + additionalInformation + " than Tommy's location.");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.three;
                 nextBtn.isEnabled = true;
             }
@@ -328,7 +343,7 @@ class LevelOneViewController: UIViewController {
         }
         
         // Adding all of the accessibility elements into the view's [accessibilityElements] array.
-        self.view.accessibilityElements = [lineRef, astronaut, accessibleNumbers, zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, nextBtn, tutorial, levels];
+        self.view.accessibilityElements = [instructions, lineRef, astronaut, accessibleNumbers, zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, nextBtn, tutorial, levels, backBtn, skipBtn];
     }
     
     // Function that resets the tutorial. Hides visibility of IBOutlet's, resets instructions, etc.
@@ -364,6 +379,10 @@ class LevelOneViewController: UIViewController {
         
         // Resetting the instruction text.
         changeInstructions(newText: "Starting in the bottom right corner of the iPad, drag your finger around to locate the next button. Keep your finger on the screen and split tap to select it.");
+        UIAccessibility.post(notification: .screenChanged, argument: title1tutorial);
+        let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
+            UIAccessibility.post(notification: .screenChanged, argument: self.instructions)
+        })
     }
     
     // Shows the numbers below [lineRef] based on the given [isVisible] parameter. True makes the numbers visible while false makes them invisible.

@@ -10,6 +10,7 @@ import AVFoundation
 
 class LevelEightViewController: UIViewController {
     /// Basic IBOutlet variables.
+    @IBOutlet weak var title8tutorial: UILabel!
     @IBOutlet weak var levels: UIButton!
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var tutorialBtn: UIButton!
@@ -72,6 +73,7 @@ class LevelEightViewController: UIViewController {
             stagesCompleted = stage.one
             initializeNumberTexts()
             changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 4 - 2" + " and click Next.");
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             astronaut.center = astronautOriginalPosition
             break;
            
@@ -87,9 +89,11 @@ class LevelEightViewController: UIViewController {
                     astronaut_positionY < maxYOfLine+100) {
                     astronaut.isHidden = true
                     changeInstructions(newText: "Great job! To practice some more subtraction, click Next.");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     stagesCompleted = stage.two
                 } else {
                     changeInstructions(newText: "Try Again. Drag him to tick number 4 - 2" + " and click Next.");
+                    UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     astronaut.center = astronautOriginalPosition
             }
         case .two:
@@ -106,6 +110,7 @@ class LevelEightViewController: UIViewController {
         astronaut.center = astronautOriginalPosition
         astronaut.isHidden = true
         changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 - 2. When you know the answer, click Next.");
+        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
         
     }
     // writes number below number line
@@ -155,12 +160,14 @@ class LevelEightViewController: UIViewController {
             break;
         case .one:
                 changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 - 2. When you know the answer, click Next.");
+                UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.zero
                 astronaut.center = astronautOriginalPosition
                 astronaut.isHidden = true
                 break;
         case .two:
             changeInstructions(newText: "Drag him to tick number 4 - 2" + " and click Next.")
+            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             stagesCompleted = stage.one
             astronaut.center = astronautOriginalPosition
             break;

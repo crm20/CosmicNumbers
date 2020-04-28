@@ -64,8 +64,9 @@ class IncorrectPopUpViewController: UIViewController {
     var previousEightNum1:Int=0
     var previousEightNum2:Int=0
     
-
+    @IBOutlet weak var tryAgain: UILabel!
     @IBOutlet weak var tryagainhint: UILabel!
+    @IBOutlet weak var restartBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -81,6 +82,10 @@ class IncorrectPopUpViewController: UIViewController {
                 tryagainhint.text = "The correct answer is less than your answer"
             }
             self.showAnimate()
+            UIAccessibility.post(notification: .screenChanged, argument: tryAgain);
+            let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false, block: {timer in
+                UIAccessibility.post(notification: .screenChanged, argument: self.tryagainhint)
+            })
         }
         
         // If the user is playing level two
