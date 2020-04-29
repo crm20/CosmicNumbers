@@ -72,7 +72,7 @@ class LevelEightViewController: UIViewController {
             lineRef.isHidden = false;
             stagesCompleted = stage.one
             initializeNumberTexts()
-            changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 4 - 2" + " and click Next.");
+            changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 4 − 2" + " and click Next.");
             UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             astronaut.center = astronautOriginalPosition
             break;
@@ -92,7 +92,7 @@ class LevelEightViewController: UIViewController {
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     stagesCompleted = stage.two
                 } else {
-                    changeInstructions(newText: "Try Again. Drag him to tick number 4 - 2" + " and click Next.");
+                    changeInstructions(newText: "Try Again. Drag him to tick number 4 − 2" + " and click Next.");
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     astronaut.center = astronautOriginalPosition
             }
@@ -109,7 +109,7 @@ class LevelEightViewController: UIViewController {
         lineRef.isHidden = false;
         astronaut.center = astronautOriginalPosition
         astronaut.isHidden = true
-        changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 - 2. When you know the answer, click Next.");
+        changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 − 2. When you know the answer, click Next.");
         UIAccessibility.post(notification: .screenChanged, argument: title8tutorial);
         let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
             UIAccessibility.post(notification: .screenChanged, argument: self.instructions)
@@ -161,14 +161,14 @@ class LevelEightViewController: UIViewController {
             stagesCompleted = stage.omega
             break;
         case .one:
-                changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 - 2. When you know the answer, click Next.");
+                changeInstructions(newText: "Let's see those subtraction skills you learned in Level 7! Solve 4 − 2. When you know the answer, click Next.");
                 UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.zero
                 astronaut.center = astronautOriginalPosition
                 astronaut.isHidden = true
                 break;
         case .two:
-            changeInstructions(newText: "Drag him to tick number 4 - 2" + " and click Next.")
+            changeInstructions(newText: "Drag him to tick number 4 − 2" + " and click Next.")
             UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             stagesCompleted = stage.one
             astronaut.center = astronautOriginalPosition
@@ -319,7 +319,6 @@ class LevelEightViewController: UIViewController {
 //    //            print(error.localizedDescription)
 //            }
 //        }
-
     /*
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation

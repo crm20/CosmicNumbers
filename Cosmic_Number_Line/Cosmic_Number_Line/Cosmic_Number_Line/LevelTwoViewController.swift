@@ -78,7 +78,7 @@ class LevelTwoViewController: UIViewController {
         switch(stagesCompleted) {
         case .zero:
             astronaut.isHidden = false;
-            changeInstructions(newText: "Tommy is currently located at the top left section of the screen, waiting for you to help him. Tap when you find him!")
+            changeInstructions(newText: "Tommy is currently located at the top left section of the screen, waiting for you to help him. Split tap when you find him!")
             UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             nextBtn.isEnabled = false;
             break;
@@ -94,7 +94,7 @@ class LevelTwoViewController: UIViewController {
             switch(subGoalCompleted) {
             case .zero:
                 if (hasTappedTommy(position: position)) {
-                    changeInstructions(newText: "Good job! You've found Tommy! Tommy now needs to move to the beginning of the number line. Place your finger on him and drag him down until you hear the first tick noise.")
+                    changeInstructions(newText: "Good job! You've found Tommy! Tommy now needs to move to the beginning of the number line. Double tap Tommy and hold your finger on him until you hear a sound. When  you hear the sound, drag him down until you hear the first tick noise.")
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     tickLocations = lineRef.getTickCoords();
                 }
@@ -108,7 +108,7 @@ class LevelTwoViewController: UIViewController {
                 if (hasTappedLineNumber(position: position, specificNumber: 5) &&
                     astronaut.center.x <= specificTick.minX + minXOfLine + lineRef.lineWidth && astronaut.center.x >= specificTick.minX + minXOfLine &&
                     astronaut.center.y <= maxYOfLine && astronaut.center.y >= maxYOfLine - lineRef.lineHeight) {
-                    changeInstructions(newText: "Tommy is back to where he belongs, but he still needs your help! Tap the 'next' button to help him again!")
+                    changeInstructions(newText: "Tommy is back to where he belongs, but he still needs your help! Split tap the next button to help him again!")
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     nextBtn.isEnabled = true;
                     stagesCompleted = .one;
@@ -255,7 +255,7 @@ class LevelTwoViewController: UIViewController {
                     
                     if (astronaut.center.x <= specificTick.minX + minXOfLine + lineRef.lineWidth && astronaut.center.x >= specificTick.minX + minXOfLine &&
                         astronaut.center.y <= maxYOfLine && astronaut.center.y >= maxYOfLine - lineRef.lineHeight) {
-                        changeInstructions(newText: "Great! Tommy has returned to the top left of the screen and now wants to reach the end of the number line. While still holding Tommy, drag him to location five. Tap the number below to check he's at the right spot!")
+                        changeInstructions(newText: "Great! Tommy has returned to the top left of the screen and now wants to reach the end of the number line. While still holding Tommy, drag him to location five. Split tap the number below to check he's at the right spot!")
                         UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                         initializeNumberTexts();
                         subGoalCompleted = .one
@@ -331,7 +331,7 @@ class LevelTwoViewController: UIViewController {
     
     func resetTutorial() {
         astronaut.isHidden = true;
-        instructions.text = "Tommy is lost and needs your help! We're going to place Tommy back to where he belongs. Tap the next button when you're ready!";
+        instructions.text = "Tommy is lost and needs your help! We're going to place Tommy back to where he belongs. Split tap the next button when you're ready!";
         UIAccessibility.post(notification: .screenChanged, argument: title2tutorial);
         let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
             UIAccessibility.post(notification: .layoutChanged, argument: self.instructions)

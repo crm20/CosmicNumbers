@@ -5,7 +5,6 @@
 //  Created by hyunc on 3/3/20.
 //  Copyright © 2020 Cosmic_Numbers. All rights reserved.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -25,4 +24,3 @@ class ViewController: UIViewController {
     @IBAction func unwindToStart(_ sender: UIStoryboardSegue) {}
     
 }
-

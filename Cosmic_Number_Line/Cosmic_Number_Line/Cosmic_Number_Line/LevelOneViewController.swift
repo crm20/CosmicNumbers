@@ -10,7 +10,6 @@ import UIKit
 class LevelOneViewController: UIViewController {
     
     /// Basic IBOutlet variables.
-
     @IBOutlet weak var title1tutorial: UILabel!
     @IBOutlet weak var levels: UIButton!
     @IBOutlet weak var tutorial: UIButton!
@@ -90,7 +89,7 @@ class LevelOneViewController: UIViewController {
             
             nextBtn.isEnabled = false;
             lineRef.isHidden = false;
-            changeInstructions(newText: "Starting at the top left corner of the screen, drag your finger in a straight line down along the left side of the screen. Tap when you hear the “tick” sound!");
+            changeInstructions(newText: "Starting at the top left corner of the screen, drag your finger in a straight line down along the left side of the screen. Split tap when you hear the “tick” sound!");
             UIAccessibility.post(notification: .layoutChanged, argument: instructions)
             break;
             
@@ -103,7 +102,7 @@ class LevelOneViewController: UIViewController {
                 initializeNumberTexts();
             }
             nextBtn.isEnabled = false;
-            changeInstructions(newText: "Directly below each tick is a number. This number tells you where you are on the number line. Drag your finger in a straight line down from any tick and tap the number!");
+            changeInstructions(newText: "Directly below each tick is a number. This number tells you where you are on the number line. Drag your finger in a straight line down from any tick and split tap the number!");
             UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             break;
             
@@ -112,7 +111,7 @@ class LevelOneViewController: UIViewController {
             // Place astronaut Tommy on the number line.
             astronaut.isHidden = false;
             nextBtn.isEnabled = false;
-            changeInstructions(newText: "Astronaut Tommy is on a tick mark. Find the first tick mark then drag your finger to the right to find Astronaut Tommy. Tap on him when you find him!");
+            changeInstructions(newText: "Astronaut Tommy is on a tick mark. Find the first tick mark then drag your finger to the right to find Astronaut Tommy. Split tap on him when you find him!");
             UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             break;
             
@@ -120,7 +119,7 @@ class LevelOneViewController: UIViewController {
         case .three:
             nextBtn.isEnabled = false;
             if (desiredNumber != selectedAnswer) {
-                changeInstructions(newText: "Find Astronaut Tommy, then find the number below him. Tap that number!");
+                changeInstructions(newText: "Find Astronaut Tommy, then find the number below him. Split tap that number!");
                 UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             }
             break;
@@ -155,7 +154,7 @@ class LevelOneViewController: UIViewController {
             case .zero:
                 // First subgoal.
                 if (subGoalCompleted == .zero && hasTappedTick(position: position)) {
-                    changeInstructions(newText: "You found the number line! Now drag your finger in a straight line to the right, following the tick marks on the number line. Tap when you hear the last tick!");
+                    changeInstructions(newText: "You found the number line! Now drag your finger in a straight line to the right, following the tick marks on the number line. Split tap when you hear the last tick!");
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     subGoalCompleted = subGoal.one;
                 // Second subgoal.
@@ -171,7 +170,7 @@ class LevelOneViewController: UIViewController {
             case .one:
                 // First subgoal.
                 if (subGoalCompleted == .zero && hasTappedLineNumber(position: position)) {
-                    changeInstructions(newText: "Now drag your finger to the right, listening to all the numbers. This number line ranges from 0 to 5. Tap when you hear number five!");
+                    changeInstructions(newText: "Now drag your finger to the right, listening to all the numbers. This number line ranges from 0 to 5. Split tap when you hear number five!");
                     subGoalCompleted = .one;
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 // Second subgoal.
@@ -187,7 +186,7 @@ class LevelOneViewController: UIViewController {
             case .two:
                 // First subgoal.
                 if (subGoalCompleted == .zero && hasTappedTommy(position: position)) {
-                    changeInstructions(newText: "Now, drag your finger down directly below him to find his number. Tap when you hear his number!");
+                    changeInstructions(newText: "Now, drag your finger down directly below him to find his number. Split tap when you hear his number!");
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                     subGoalCompleted = subGoal.one;
                     
@@ -378,7 +377,7 @@ class LevelOneViewController: UIViewController {
         nextBtn.isEnabled = true;
         
         // Resetting the instruction text.
-        changeInstructions(newText: "Starting in the bottom right corner of the iPad, drag your finger around to locate the next button. Keep your finger on the screen and split tap to select it.");
+        changeInstructions(newText: "Starting in the bottom right corner of the iPad, drag your finger around to locate the next button. Keep your finger on the screen and split tap to select it. Split tap by keeping one finger on the item and tapping on the screen with another finger.");
         UIAccessibility.post(notification: .screenChanged, argument: title1tutorial);
         let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
             UIAccessibility.post(notification: .screenChanged, argument: self.instructions)

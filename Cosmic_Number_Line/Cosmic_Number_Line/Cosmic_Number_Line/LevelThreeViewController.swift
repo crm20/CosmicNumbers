@@ -89,14 +89,14 @@ class LevelThreeViewController: UIViewController {
                 lineRef.isHidden = false;
                 astronaut.isHidden = false;
 
-                changeInstructions(newText: "First find and tap Astronaut Tommy.");
+                changeInstructions(newText: "First find and split tap Astronaut Tommy.");
                 UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 
             
             case .one:
                 nextBtn.isEnabled = false;
                 if ("Bigger" != selectedAnswer) {
-                    changeInstructions(newText: "Tap the number of Astronaut Tommy's location on the number line. Compare the number below.");
+                    changeInstructions(newText: "Split tap the number of Astronaut Tommy's location on the number line. Compare the number below.");
                     UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 }
                 
@@ -128,13 +128,13 @@ class LevelThreeViewController: UIViewController {
                 case .zero:
                 // First subgoal.
                     if (subGoalCompleted == .zero && hasTappedTommy(position: position)) {
-                        changeInstructions(newText: "Now find Astronaut Tommy's Location and drag your finger below to find his number. Tap it to select.");
+                        changeInstructions(newText: "Now find Astronaut Tommy's Location and drag your finger below to find his number. Split tap it to select.");
                         UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                         subGoalCompleted = .one;
                         
                     } else if (subGoalCompleted == .one && hasTappedLineNumber(position: position, specificNumber: 3)) {
                         
-                        changeInstructions(newText: "Great! Now we know that Astronaut Tommy is located on the number 3. Tap 'Next' to continue.");
+                        changeInstructions(newText: "Great! Now we know that Astronaut Tommy is located on the number 3. Split tap the next button to continue.");
                         UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                         subGoalCompleted = subGoal.zero;
                         stagesCompleted = stage.one;
@@ -299,7 +299,7 @@ class LevelThreeViewController: UIViewController {
         nextBtn.setTitle("Next", for: .normal);
         
         // Resetting the instruction text.
-        changeInstructions(newText: "Now we will compare Astronaut Tommy’s Location with an another number! Find and tap the next button on the bottom right to continue.");
+        changeInstructions(newText: "Now we will compare Astronaut Tommy’s Location with an another number! Find and split tap the next button on the bottom right to continue.");
         UIAccessibility.post(notification: .screenChanged, argument: title3tutorial);
         let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
             UIAccessibility.post(notification: .screenChanged, argument: self.instructions)

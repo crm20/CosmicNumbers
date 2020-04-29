@@ -73,7 +73,7 @@ class LevelSixViewController: UIViewController {
             lineRef.isHidden = false;
             stagesCompleted = stage.one
             initializeNumberTexts()
-            changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 3 + 1" + " and click Next.");
+            changeInstructions(newText: "Find Astronaut Tommy near the top left corner of the iPad. Drag him to the answer of 3 + 1" + " and split tap next.");
             UIAccessibility.post(notification: .layoutChanged, argument: instructions);
             astronaut.center = astronautOriginalPosition
             break;
@@ -88,11 +88,11 @@ class LevelSixViewController: UIViewController {
                        && astronaut_positionY >= maxYOfLine-70 &&
                        astronaut_positionY < maxYOfLine+100) {
                        astronaut.isHidden = true
-                       changeInstructions(newText: "Great job! To practice some more addition, click Next.");
+                       changeInstructions(newText: "Great job! To practice some more addition, split tap next.");
                        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                        stagesCompleted = stage.two
                    } else {
-                       changeInstructions(newText: "Try Again. Drag him to tick number 3 + 1" + " and click Next.");
+                       changeInstructions(newText: "Try Again. Drag him to tick number 3 + 1" + " and split tap next.");
                        UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                        astronaut.center = astronautOriginalPosition
                }
@@ -110,7 +110,7 @@ class LevelSixViewController: UIViewController {
         lineRef.isHidden = false;
         astronaut.center = astronautOriginalPosition
         astronaut.isHidden = true
-        changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, click Next.");
+        changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, split tap next.");
         UIAccessibility.post(notification: .screenChanged, argument: title6tutorial);
         let timer = Timer.scheduledTimer(withTimeInterval: 3.3, repeats: false, block: {timer in
             UIAccessibility.post(notification: .screenChanged, argument: self.instructions)
@@ -162,14 +162,14 @@ class LevelSixViewController: UIViewController {
             stagesCompleted = stage.omega
             break;
         case .one:
-                changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, click Next.");
+                changeInstructions(newText: "Let's see those addition skills you learned in Level 5! Solve 3 + 1. When you know the answer, split tap next.");
                 UIAccessibility.post(notification: .layoutChanged, argument: instructions);
                 stagesCompleted = stage.zero
                 astronaut.center = astronautOriginalPosition
                 astronaut.isHidden = true
                 break;
        case .two:
-           changeInstructions(newText: "Drag him to tick number 3 + 1" + " and click Next.")
+           changeInstructions(newText: "Drag him to tick number 3 + 1" + " and split tap next.")
            UIAccessibility.post(notification: .layoutChanged, argument: instructions);
            stagesCompleted = stage.one
            astronaut.center = astronautOriginalPosition
@@ -320,7 +320,6 @@ class LevelSixViewController: UIViewController {
 //    //            print(error.localizedDescription)
 //            }
 //        }
-
     /*
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation

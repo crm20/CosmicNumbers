@@ -92,7 +92,7 @@ class LevelFourViewController: UIViewController {
             case .zero:
                 if (accessibleNumbers.count != 0) {
                     changeLineNumberVisibility(isVisible: true)
-                } else {    
+                } else {
                     initializeNumberTexts();
                 }
                 nextBtn.isEnabled = false;
@@ -110,7 +110,7 @@ class LevelFourViewController: UIViewController {
             case .two:
                 //nextBtn.isEnabled = false;
                 if ("Less Than" != selectedAnswer) {
-                    changeInstructions(newText: "Tap the number of Astronaut Tommy's location on the number line. Compare the number below.");
+                    changeInstructions(newText: "Split tap the number of Astronaut Tommy's location on the number line. Compare the number below.");
                 }
                 break;
             

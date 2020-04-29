@@ -46,7 +46,7 @@ class LevelSevenGame: UIViewController {
         // Make the screen accessible, and specify the question with a randomly chosen number from 0-5
         isAccessibilityElement = true
         //astronautPlaceLabel.text = "Drag Astronaut Tommy to tick \(num1) + \(num2)"
-        astronautPlaceLabel.text = "Solve \(num1) - \(num2)!\nFirst Drag Astronaut Tommy to tick \(num1)"
+        astronautPlaceLabel.text = "Solve \(num1) − \(num2)!\nFirst Drag Astronaut Tommy to tick \(num1)"
         astronautOriginalPosition = astronaut.center
     }
     
