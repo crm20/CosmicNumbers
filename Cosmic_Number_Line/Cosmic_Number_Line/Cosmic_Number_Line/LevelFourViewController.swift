@@ -29,7 +29,7 @@ class LevelFourViewController: UIViewController {
     
     // Variables used to determine the correct answer for the buttons..
     /// Note: the [desiredNumber]  can be any value from 0 -5. However, for tutorial sake, it is hardcoded to be three as it forces the player to investigate halfway through the number line before finding Tommy.
-    var desiredNumber = 2;
+    var desiredNumber = 4;
     var astronautNumber = 3;
     var accessibleNumbers:[UIView] = []
     var answerArray: [String] = []
@@ -104,7 +104,7 @@ class LevelFourViewController: UIViewController {
                 //astronaut.isHidden = true;
                 pickerItem.isHidden = false;
 
-                changeInstructions(newText: "First, find and select Equal to on the picker item and click Next");
+                changeInstructions(newText: "First, find and select Equal to on the picker item and split tap next.");
                 break;
             
             case .one:
@@ -141,7 +141,7 @@ class LevelFourViewController: UIViewController {
                         
                     } else if (subGoalCompleted == .one && selectedAnswer == "Greater than") {
                         
-                        changeInstructions(newText: "Awesome work, Click Next to continue to level four");
+                        changeInstructions(newText: "Awesome work, split tap next to continue to level four");
                         subGoalCompleted = .two;
                         stagesCompleted = stage.one;
                         nextBtn.isEnabled = true;
@@ -191,6 +191,12 @@ class LevelFourViewController: UIViewController {
             var minXOfLine = lineRef.center.x-(linerefbounds.width/2)
             var maxYOfLine = lineRef.center.y+(linerefbounds.height/2)
             let label = UILabel(frame: CGRect(x: xDist+lineRef.offSetFromEdges + minXOfLine, y: maxYOfLine+spaceBetweenLineAndText, width: CGFloat(textWidth), height: CGFloat(textHeight)))
+            if (i == desiredNumber) {
+                astronaut.center = CGPoint(
+                    x: minXOfLine + xDist + lineRef.offSetFromEdges + 15.0,
+                    y: lineRef.center.y + (lineRef.bounds.height/2) - 30.0 - astronaut.bounds.size.height / 2
+                )
+            }
             
             lineNumberLocations.append(label.center);
             
@@ -250,7 +256,7 @@ class LevelFourViewController: UIViewController {
         nextBtn.setTitle("Next", for: .normal);
         
         // Resetting the instruction text.
-        changeInstructions(newText: "Now we are going to introduce the picker item. Click next to continue.");
+        changeInstructions(newText: "Now we are going to introduce the picker item. split tap next to continue.");
 
     }
     

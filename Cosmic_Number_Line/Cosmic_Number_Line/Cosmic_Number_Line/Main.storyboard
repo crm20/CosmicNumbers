@@ -1164,7 +1164,7 @@
                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3: Slowly drag Astronaut Tommy to the right by the amount giving by the instructions and tap submit." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spI-3C-Ju7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3: Slowly drag Astronaut Tommy to the right by the amount given by the instructions and tap submit." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spI-3C-Ju7">
                                 <rect key="frame" x="107.5" y="505" width="865" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="aRo-IN-tVa"/>
@@ -2497,21 +2497,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars" translatesAutoresizingMaskIntoConstraints="NO" id="jWR-FY-mUw">
-                                <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="1222"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3Z-7b-oDD" customClass="Line" customModule="Cosmic_Number_Line" customModuleProvider="target">
-                                <rect key="frame" x="123" y="393" width="834" height="150"/>
+                                <rect key="frame" x="123" y="805" width="866" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="866" id="ZrS-T9-jpD"/>
                                     <constraint firstAttribute="height" constant="150" id="zc5-Yw-zjj"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfN-1d-KxK" userLabel="GrayArea">
-                                <rect key="frame" x="0.0" y="0.0" width="1080" height="117"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="117"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Two Tutorial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsw-tL-Zxs">
-                                        <rect key="frame" x="296" y="8" width="489" height="48"/>
+                                        <rect key="frame" x="296" y="8" width="521" height="48"/>
                                         <accessibility key="accessibilityConfiguration" label="Level Two Tutorial"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2543,7 +2543,7 @@
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFx-JV-cyD">
-                                <rect key="frame" x="231" y="122" width="618" height="211"/>
+                                <rect key="frame" x="231" y="122" width="650" height="623"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="235" id="Tjr-LB-wEO"/>
                                     <constraint firstAttribute="width" constant="650" id="xIg-pB-xw4"/>
@@ -2553,7 +2553,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssL-KT-kHy">
-                                <rect key="frame" x="880" y="670" width="180" height="90"/>
+                                <rect key="frame" x="912" y="1082" width="180" height="90"/>
                                 <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="7Ws-iO-QRc"/>
@@ -2569,7 +2569,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKL-hF-TbM">
-                                <rect key="frame" x="676" y="670" width="180" height="90"/>
+                                <rect key="frame" x="708" y="1082" width="180" height="90"/>
                                 <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="cH9-9p-5cl"/>
@@ -2619,7 +2619,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36m-AC-twy">
-                                <rect key="frame" x="880" y="145" width="180" height="90"/>
+                                <rect key="frame" x="912" y="145" width="180" height="90"/>
                                 <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="TSH-hi-QUa"/>
@@ -2701,7 +2701,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stars" translatesAutoresizingMaskIntoConstraints="NO" id="SRk-IF-gHp">
-                                <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="810"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37Z-tf-GXG">
@@ -2716,7 +2716,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mY1-G9-7zd">
-                                <rect key="frame" x="880" y="670" width="180" height="90"/>
+                                <rect key="frame" x="912" y="670" width="180" height="90"/>
                                 <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="GWs-Ub-a2P"/>
@@ -2731,14 +2731,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOz-IZ-TpA" customClass="Line" customModule="Cosmic_Number_Line" customModuleProvider="target">
-                                <rect key="frame" x="123" y="348" width="834" height="150"/>
+                                <rect key="frame" x="123" y="348" width="866" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="7BJ-Js-T0o"/>
                                     <constraint firstAttribute="width" constant="866" id="PfY-vA-IpU"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ehw-bs-tbw">
-                                <rect key="frame" x="676" y="670" width="180" height="90"/>
+                                <rect key="frame" x="708" y="670" width="180" height="90"/>
                                 <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="UMf-ft-Pea"/>
@@ -2786,7 +2786,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Low-MV-qdg" userLabel="GrayArea">
-                                <rect key="frame" x="0.0" y="0.0" width="1080" height="117"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="117"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level Six Tutorial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfK-Qk-Kmx">
                                         <rect key="frame" x="296" y="8" width="521" height="48"/>
@@ -2816,7 +2816,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aq0-zh-f4I">
-                                <rect key="frame" x="880" y="145" width="180" height="90"/>
+                                <rect key="frame" x="912" y="145" width="180" height="90"/>
                                 <color key="backgroundColor" red="0.45486102020000002" green="0.2331708438" blue="0.67988989639999997" alpha="0.88" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="fbI-Lr-vU6"/>
@@ -3356,12 +3356,13 @@
                                     <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="unwindToLevelFourTutorialSelector:" destination="mga-bC-hyQ" eventType="touchUpOutside" id="inY-k5-z8X"/>
+                                    <action selector="unwindToLevelFourTutorialSelector:" destination="mga-bC-hyQ" eventType="touchUpInside" id="GEB-4o-3f1"/>
                                     <segue destination="xzk-l3-Iwk" kind="unwind" unwindAction="unwindToLevelSelector:" id="t9T-3t-iZ3"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="73y-Yz-bKK" userLabel="Astronaut2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="73y-Yz-bKK" userLabel="Astronaut2">
                                 <rect key="frame" x="198" y="533" width="101" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" label="Astronaut Tommy">
                                     <accessibilityTraits key="traits" none="YES"/>
                                     <bool key="isElement" value="YES"/>
@@ -3389,6 +3390,7 @@
                                     <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="tutorialButtonTapped:" destination="mga-bC-hyQ" eventType="touchUpInside" id="OVP-08-bzg"/>
                                     <segue destination="xzk-l3-Iwk" kind="unwind" unwindAction="unwindToLevelFourTutorialSelector:" id="TFN-3Y-sMn"/>
                                 </connections>
                             </button>
@@ -3423,7 +3425,6 @@
                             <constraint firstItem="Qoa-YD-LcQ" firstAttribute="leading" secondItem="lfy-KN-96N" secondAttribute="leading" constant="20" id="TDA-VI-MnM"/>
                             <constraint firstItem="acu-ho-8Zr" firstAttribute="leading" secondItem="lfy-KN-96N" secondAttribute="leading" constant="20" id="USG-yg-xsD"/>
                             <constraint firstItem="cKO-PF-cTJ" firstAttribute="top" secondItem="aM9-bh-5BL" secondAttribute="bottom" constant="123" id="UpO-PW-Wla"/>
-                            <constraint firstItem="73y-Yz-bKK" firstAttribute="leading" secondItem="aM9-bh-5BL" secondAttribute="leading" constant="707" id="Vwe-Kd-Qcn"/>
                             <constraint firstItem="aM9-bh-5BL" firstAttribute="centerY" secondItem="DrC-qB-amz" secondAttribute="centerY" id="WhF-T7-d9y"/>
                             <constraint firstItem="lfy-KN-96N" firstAttribute="trailing" secondItem="aM9-bh-5BL" secondAttribute="trailing" constant="123" id="YE0-Vz-sOJ"/>
                             <constraint firstItem="Fof-BM-cgl" firstAttribute="top" secondItem="DrC-qB-amz" secondAttribute="top" id="dZe-Xy-ZAi"/>
@@ -3432,7 +3433,6 @@
                             <constraint firstItem="acu-ho-8Zr" firstAttribute="top" secondItem="Qoa-YD-LcQ" secondAttribute="bottom" constant="20" id="jMK-mD-Mgb"/>
                             <constraint firstItem="lfy-KN-96N" firstAttribute="bottom" secondItem="Jtl-52-QsB" secondAttribute="bottom" constant="50" id="o58-bv-UI1"/>
                             <constraint firstItem="aM9-bh-5BL" firstAttribute="leading" secondItem="lfy-KN-96N" secondAttribute="leading" constant="123" id="rub-b6-6Xs"/>
-                            <constraint firstItem="73y-Yz-bKK" firstAttribute="top" secondItem="lfy-KN-96N" secondAttribute="top" constant="400" id="uO5-Df-4Fc"/>
                             <constraint firstItem="cKO-PF-cTJ" firstAttribute="leading" secondItem="Jtl-52-QsB" secondAttribute="trailing" constant="34" id="v7j-Jg-6DG"/>
                             <constraint firstAttribute="trailing" secondItem="Fof-BM-cgl" secondAttribute="trailing" id="zgv-0P-8Kh"/>
                         </constraints>
@@ -3472,7 +3472,7 @@
         <segue reference="zcJ-C4-SrS"/>
         <segue reference="d5r-x1-ry4"/>
         <segue reference="Emz-po-rLS"/>
-        <segue reference="bRx-7X-9Oe"/>
+        <segue reference="HbG-NO-0d5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="astronaut" width="77" height="87"/>
