@@ -12,6 +12,7 @@ class LevelFourViewController: UIViewController {
     
 
     @IBOutlet weak var lineRef: Line!
+    @IBOutlet weak var title4tutorial: UILabel!
     @IBOutlet weak var astronaut: UIImageView!
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var questionNum: UILabel!
@@ -73,6 +74,7 @@ class LevelFourViewController: UIViewController {
         backBtn.accessibilityLabel = "Back"
         pickerItem.isAccessibilityElement = true
         pickerItem.accessibilityLabel = "pickerItem"
+        astronaut.isHidden = true;
         
         // Calling the function resetTutorial to hide the IBOutlet's.
         resetTutorial();
@@ -80,25 +82,28 @@ class LevelFourViewController: UIViewController {
     
     
     @IBAction func onNext(_ sender: Any) {
+        astronaut.isHidden = false;
         // Switch statement that determines the visibility of elements on the scene based on which stage the player is on.
         // Instructions are also changed during each stage/step of the stage.
+
         switch(stagesCompleted) {
                 
             // Initial stage of simply tapping the [nextBtn].
             case .omega:
                 stagesCompleted = .zero;
+
                 
             // Stage 0: Renders the number line.
             case .zero:
                 if (accessibleNumbers.count != 0) {
                     changeLineNumberVisibility(isVisible: true)
-                } else {
+                } else {    
                     initializeNumberTexts();
                 }
                 nextBtn.isEnabled = false;
                 lineRef.isHidden = false;
                 skipBtn.isHidden = true;
-                astronaut.isHidden = false;
+                //astronaut.isHidden = true;
                 pickerItem.isHidden = false;
 
                 changeInstructions(newText: "First, find and select Greater than on the picker item");
@@ -110,7 +115,7 @@ class LevelFourViewController: UIViewController {
             case .two:
                 //nextBtn.isEnabled = false;
                 if ("Less Than" != selectedAnswer) {
-                    changeInstructions(newText: "Split tap the number of Astronaut Tommy's location on the number line. Compare the number below.");
+                    changeInstructions(newText: "Tap the number of Astronaut Tommy's location on the number line. Compare the number below.");
                 }
                 break;
             
@@ -133,7 +138,7 @@ class LevelFourViewController: UIViewController {
                 // First subgoal.
                     //Go to here
                     if (subGoalCompleted == .zero && selectedAnswer == "Greater than" ) {
-                        changeInstructions(newText: "Awesome! Now is Tommy's position less than, greater than or equal to 4?");
+                        changeInstructions(newText: "Awesome! Now is Tommy's position less than, greater than \n or equal to 4?");
                         subGoalCompleted = .one;
                         
                     } else if (subGoalCompleted == .one && selectedAnswer == "Less than") {
@@ -249,6 +254,7 @@ class LevelFourViewController: UIViewController {
         // Resetting the instruction text.
         changeInstructions(newText: "Now we are going to introduce the picker item. Click next to continue.");
         skipBtn.isHidden = true;
+
     }
     
     func changeLineNumberVisibility(isVisible: Bool) {
