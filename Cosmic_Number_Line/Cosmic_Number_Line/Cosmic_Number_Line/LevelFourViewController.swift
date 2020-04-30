@@ -1,5 +1,5 @@
 //
-//  LevelThreeViewController.swift
+//  LevelFourViewController.swift
 //  Cosmic_Number_Line
 //
 //  Created by hyunc on 3/21/20.
@@ -85,7 +85,6 @@ class LevelFourViewController: UIViewController {
         astronaut.isHidden = false;
         // Switch statement that determines the visibility of elements on the scene based on which stage the player is on.
         // Instructions are also changed during each stage/step of the stage.
-
         switch(stagesCompleted) {
                 
             // Initial stage of simply tapping the [nextBtn].
@@ -97,7 +96,7 @@ class LevelFourViewController: UIViewController {
             case .zero:
                 if (accessibleNumbers.count != 0) {
                     changeLineNumberVisibility(isVisible: true)
-                } else {    
+                } else {
                     initializeNumberTexts();
                 }
                 nextBtn.isEnabled = false;
