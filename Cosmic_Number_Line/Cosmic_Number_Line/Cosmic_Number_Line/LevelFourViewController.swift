@@ -97,16 +97,15 @@ class LevelFourViewController: UIViewController {
             case .zero:
                 if (accessibleNumbers.count != 0) {
                     changeLineNumberVisibility(isVisible: true)
-                } else {
+                } else {    
                     initializeNumberTexts();
                 }
                 nextBtn.isEnabled = false;
                 lineRef.isHidden = false;
-                skipBtn.isHidden = true;
                 //astronaut.isHidden = true;
                 pickerItem.isHidden = false;
 
-                changeInstructions(newText: "First, find and select Greater than on the picker item");
+                changeInstructions(newText: "First, find and select Equal to on the picker item and click Next");
                 break;
             
             case .one:
@@ -137,11 +136,11 @@ class LevelFourViewController: UIViewController {
                 case .zero:
                 // First subgoal.
                     //Go to here
-                    if (subGoalCompleted == .zero && selectedAnswer == "Greater than" ) {
-                        changeInstructions(newText: "Awesome! Now is Tommy's position less than, greater than or equal to 4?");
+                    if (subGoalCompleted == .zero && selectedAnswer == "Equal to" ) {
+                        changeInstructions(newText: "Awesome! Now is Tommy's position less than, greater than or equal to 3?");
                         subGoalCompleted = .one;
                         
-                    } else if (subGoalCompleted == .one && selectedAnswer == "Less than") {
+                    } else if (subGoalCompleted == .one && selectedAnswer == "Greater than") {
                         
                         changeInstructions(newText: "Awesome work, Click Next to continue to level four");
                         subGoalCompleted = .two;
@@ -253,7 +252,6 @@ class LevelFourViewController: UIViewController {
         
         // Resetting the instruction text.
         changeInstructions(newText: "Now we are going to introduce the picker item. Click next to continue.");
-        skipBtn.isHidden = true;
 
     }
     
