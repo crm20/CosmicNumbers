@@ -97,7 +97,7 @@ class LevelFourViewController: UIViewController {
             case .zero:
                 if (accessibleNumbers.count != 0) {
                     changeLineNumberVisibility(isVisible: true)
-                } else {    
+                } else {
                     initializeNumberTexts();
                 }
                 nextBtn.isEnabled = false;
@@ -138,7 +138,7 @@ class LevelFourViewController: UIViewController {
                 // First subgoal.
                     //Go to here
                     if (subGoalCompleted == .zero && selectedAnswer == "Greater than" ) {
-                        changeInstructions(newText: "Awesome! Now is Tommy's position less than, greater than \n or equal to 4?");
+                        changeInstructions(newText: "Awesome! Now is Tommy's position less than, greater than or equal to 4?");
                         subGoalCompleted = .one;
                         
                     } else if (subGoalCompleted == .one && selectedAnswer == "Less than") {
